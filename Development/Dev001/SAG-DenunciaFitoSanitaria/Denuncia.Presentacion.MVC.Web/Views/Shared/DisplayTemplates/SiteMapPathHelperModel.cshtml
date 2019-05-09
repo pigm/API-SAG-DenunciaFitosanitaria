@@ -1,0 +1,24 @@
+﻿@model MvcSiteMapProvider.Web.Html.Models.SiteMapPathHelperModel
+@using System.Web.Mvc.Html
+@using System.Linq
+@using MvcSiteMapProvider.Web.Html.Models
+@MapPath(Model.Nodes)
+
+@helper  MapPath(List<SiteMapNodeModel> nodeList)
+{
+    @:<ul class="page-breadcrumb breadcrumb">
+    int index = 0;
+    foreach (var node in Model)
+    {
+        if (!node.IsRootNode)
+        {
+            <li @if (node == Model.Last()) { <text> class="active" </text>   }>
+                @Html.DisplayFor(m => node)
+                <i class="fa fa-circle"></i>
+            </li>
+        index++;
+    }
+}
+    @:
+</ul>
+}

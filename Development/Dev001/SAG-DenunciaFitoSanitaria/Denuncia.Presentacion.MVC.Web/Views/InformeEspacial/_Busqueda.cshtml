@@ -1,0 +1,42 @@
+﻿@model Denuncia.Presentacion.MVC.Web.Models.SolicitudDenunciaModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption">Resultado</div>
+                <div class="tools">
+                    <a href="" class="fullscreen" data-original-title="" title=""> </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover table-bordered" id="datatable_DenunciasInforme">
+                            <thead>
+                                <tr>
+                                    <th>idDenuncia</th>
+                                    <th>IdEstadoDenuncia</th>
+                                    <th>latitud</th>
+                                    <th>longitud</th>
+                                    <th>Denuncia</th>                                 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in @Model.ListaDenunciasInforme.Where(x=>x.IdEstadoDenuncia == 3 || x.IdEstadoDenuncia == 4).ToList())
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.IdDenuncia)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.IdEstadoDenuncia)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.latitud)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.longitud)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Denuncia)</td>                                        
+                                    </tr>
+                                }
+                            <tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

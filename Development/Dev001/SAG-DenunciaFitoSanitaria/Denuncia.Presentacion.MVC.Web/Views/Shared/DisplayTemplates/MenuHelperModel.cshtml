@@ -1,0 +1,81 @@
+﻿@model MvcSiteMapProvider.Web.Html.Models.MenuHelperModel
+@using System.Web.Mvc.Html
+@using MvcSiteMapProvider.Web.Html.Models
+@TopMenu(Model.Nodes)
+@helper TopMenu(List<SiteMapNodeModel> nodeList)
+{
+    <div class="page-sidebar navbar-collapse collapse">
+        <ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
+
+            @foreach (SiteMapNodeModel node in nodeList)
+            {
+                if (!node.IsRootNode)
+                {
+                    string url = node.IsClickable ? node.Url : "javascript:;";
+                    string classActive = node.Children.Any(chi => chi.IsInCurrentPath) ? "active open" : string.Empty;
+                    string openArrow = node.Children.Any(chi => chi.IsInCurrentPath) ? "open" : string.Empty;
+                    string classActiveItem = node.IsInCurrentPath ? "active" : string.Empty;
+                    string id = string.Format("menu_nivel_{0}", node.Attributes["visibility"].ToString());
+
+                    if (!node.Children.Any())
+                    {
+                        if (!string.IsNullOrEmpty(node.Url))
+                        {
+            <li id="@id" class="nav-item @classActiveItem">
+                <a href="@url" class="nav-link nav-toggle">
+                    @IconBootstrap(node.ImageUrl)
+                    <span class="title">@node.Title</span>
+                    @*<span class="arrow"></span>*@
+                </a>
+            </li>
+                        }
+                    }
+                    else
+                    {
+            <li id="@id" class="nav-item @classActive">
+                <a>
+                    @IconBootstrap(node.ImageUrl)
+                    <span class="title">@node.Title</span>
+                    <span class="arrow @openArrow"></span>
+                </a>
+                @MoreDropDownMenu(node.Children)
+            </li>
+                    }
+                }
+            }
+        </ul>
+        <ul class="page-sidebar-menu">
+            <li class="nav-item"><span class="copyright">Sistema realizado por la <strong>División de Protección Agrícola y Forestal</strong> del Servicio Agrícola y Ganadero (SAG)</span></li>
+        </ul>
+    </div>
+}
+
+@helper MoreDropDownMenu(SiteMapNodeModelList nodeList)
+{
+    <ul class="sub-menu">
+        @foreach (SiteMapNodeModel node in nodeList)
+        {
+            string url = node.IsClickable ? node.Url : "javascript:;";
+            string classActive = node.IsInCurrentPath ? "active" : string.Empty;
+            bool visible = node.Attributes["visibility"].ToString() != "false";
+
+            if (visible)
+            {
+                <li class="nav-item @classActive">
+                    <a href="@url" class="nav-link ">
+                        <span class="title">@node.Title</span>
+                    </a>
+                </li>
+            }
+        }
+    </ul>
+}
+
+@helper IconBootstrap(string icon)
+{
+if (!string.IsNullOrEmpty(icon))
+{
+        <i class="@icon.Remove(0, 1)"></i>
+}
+}
+

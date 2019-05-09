@@ -1,0 +1,136 @@
+﻿@model Denuncia.Presentacion.MVC.Web.Models.SolicitudDenunciaModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Metronic.cshtml";
+}
+@section styles{
+    <link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+    <style>
+        #map_canvas {
+            height: 400px;
+            width: 50%;
+        }
+    </style>
+}
+<div class="page-head">
+    <div class="page-title">
+        <h1>
+            Reporte General
+        </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light bg-inverse">
+            <div class="portlet-title">
+                <div class="caption">Filtros</div>
+            </div>
+            <div class="portlet-body">
+                @using (Html.BeginForm("Busqueda", "InformeGeneral", FormMethod.Get, new { @id = "form-Busqueda", @class = "form-horizontal", @role = "form" }))
+                {
+                    <div class="form-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">Tipo:</label>
+                                    <div class="col-md-6">
+                                        @Html.DropDownListFor(model => model.IdTipoDenuncia, Model.listTipo, new { @id = "IdTipoDenuncia", @name = "IdTipoDenuncia", @class = "form-control input-sm" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">Fecha:</label>
+                                    <div class="col-md-6">
+                                        <div class="input-group input-group-sm date-picker input-daterange">
+                                            @Html.TextBoxFor(model => model.Datefrom, "{0:dd-mm-yyyy}", new { @id = "FechaSolicitudDesde", @name = "FechaSolicitudDesde", @placeholder = "Desde", @readonly = "readonly", @class = "form-control" })
+                                            <span class="input-group-addon"> - </span>
+                                            @Html.TextBoxFor(model => model.DateTo, "{0:dd-mm-yyyy}", new { @id = "FechaSolicitudHasta", @name = "FechaSolicitudHasta", @placeholder = "Hasta", @readonly = "readonly", @class = "form-control" })
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">Categoría:</label>
+                                    <div class="col-md-6">
+                                        @Html.DropDownListFor(model => model.IdCategoria, Model.ListaCategoria, new { @id = "IdCategoria", @name = "IdCategoria", @class = "form-control input-sm" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">Sub Categoría:</label>
+                                    <div class="col-md-6">
+                                        @Html.DropDownListFor(model => model.IdSubCategoria, Model.ListaSubCategoria, new { @id = "IdSubCategoria", @name = "IdSubCategoria", @class = "form-control input-sm" })
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">Región:</label>
+                                    <div class="col-md-6">
+                                        @Html.DropDownListFor(model => model.IdRegion, Model.ListaRegion, new { @id = "IdRegion", @name = "IdRegion", @class = "form-control input-sm" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">Comuna:</label>
+                                    <div class="col-md-6">
+                                        @Html.DropDownListFor(model => model.IdComuna, Model.ListaComuna, new { @id = "IdComuna", @name = "IdComuna", @class = "form-control input-sm" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label col-md-4">Estado:</label>
+                                    <div class="col-md-6">
+                                        @Html.DropDownListFor(model => model.IdEstado, Model.ListaEstadoGeneral, new { @id = "IdEstado", @name = "IdEstado", @class = "form-control input-sm" })
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="control-label col-md-4"></div>
+                                    <div class="col-md-6">
+                                        <button type="button" class="btn btn-circle blue" id="btnBuscar"><i class="fa fa-search"></i> Buscar</button>
+                                        <button type="button" class="btn btn-circle green" id="btnDescargar"><i class="fa fa-search"></i> Descarga Excel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divBusqueda">
+    @Html.Partial("_Busqueda", Model)
+</div>
+
+<div id="ModalDenuncia" class="modal fade in" tabindex="-1" data-replace="true" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    @Scripts.Render("~/InformeGeneral/script")
+    <script>
+        $(document).ready(function () {
+            InformeGeneral.Init();
+        });
+    </script>
+}

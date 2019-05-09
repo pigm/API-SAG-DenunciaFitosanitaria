@@ -1,0 +1,94 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Denuncia.Presentacion.MVC.Web", "Denuncia.Presentacion.MVC.Web\Denuncia.Presentacion.MVC.Web.csproj", "{9EF54C0A-1ED7-42D9-AB67-658260BE0A9E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01. Presentacion", "01. Presentacion", "{C15A80FC-C6AF-479F-B1A8-A6E5787A2EF5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Negocio", "02. Negocio", "{BC7E9FBF-36A6-403E-BD47-A3ED5F48550B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. Datos", "03. Datos", "{6B3B95FF-AF00-43EE-B0C6-A24465E72328}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. Transversal", "04. Transversal", "{AE371488-29C5-40A8-B4E0-B9CC218A21C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Denuncia.Entidad", "Denuncia.Entidad\Denuncia.Entidad.csproj", "{F492BC7E-BAB5-4644-B66C-EE2CA12B70D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Denuncia.Negocio", "Denuncia.Negocio\Denuncia.Negocio.csproj", "{6239F325-44BC-4552-8EBD-EB597373D81D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Denuncia.Datos", "Denuncia.Datos\Denuncia.Datos.csproj", "{CFBF500A-8E4A-4006-8C86-A5718D936C12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Denuncia.Transversal.Contenedor", "Denuncia.Transversal.Contenedor\Denuncia.Transversal.Contenedor.csproj", "{D9B588FB-B146-49C5-9FD5-F55EA86091B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Libs", "_Libs", "{7AFAB0A7-7236-403E-84FA-8E6D362ADD92}"
+	ProjectSection(SolutionItems) = preProject
+		_Libs\ObjetoTransferencia.dll = _Libs\ObjetoTransferencia.dll
+		_Libs\ServicioAutenticacion.dll = _Libs\ServicioAutenticacion.dll
+		_Libs\Util.dll = _Libs\Util.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9EF54C0A-1ED7-42D9-AB67-658260BE0A9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9EF54C0A-1ED7-42D9-AB67-658260BE0A9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9EF54C0A-1ED7-42D9-AB67-658260BE0A9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9EF54C0A-1ED7-42D9-AB67-658260BE0A9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F492BC7E-BAB5-4644-B66C-EE2CA12B70D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F492BC7E-BAB5-4644-B66C-EE2CA12B70D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F492BC7E-BAB5-4644-B66C-EE2CA12B70D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F492BC7E-BAB5-4644-B66C-EE2CA12B70D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6239F325-44BC-4552-8EBD-EB597373D81D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6239F325-44BC-4552-8EBD-EB597373D81D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6239F325-44BC-4552-8EBD-EB597373D81D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6239F325-44BC-4552-8EBD-EB597373D81D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFBF500A-8E4A-4006-8C86-A5718D936C12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFBF500A-8E4A-4006-8C86-A5718D936C12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFBF500A-8E4A-4006-8C86-A5718D936C12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFBF500A-8E4A-4006-8C86-A5718D936C12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9B588FB-B146-49C5-9FD5-F55EA86091B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9B588FB-B146-49C5-9FD5-F55EA86091B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9B588FB-B146-49C5-9FD5-F55EA86091B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9B588FB-B146-49C5-9FD5-F55EA86091B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9EF54C0A-1ED7-42D9-AB67-658260BE0A9E} = {C15A80FC-C6AF-479F-B1A8-A6E5787A2EF5}
+		{F492BC7E-BAB5-4644-B66C-EE2CA12B70D9} = {BC7E9FBF-36A6-403E-BD47-A3ED5F48550B}
+		{6239F325-44BC-4552-8EBD-EB597373D81D} = {BC7E9FBF-36A6-403E-BD47-A3ED5F48550B}
+		{CFBF500A-8E4A-4006-8C86-A5718D936C12} = {6B3B95FF-AF00-43EE-B0C6-A24465E72328}
+		{D9B588FB-B146-49C5-9FD5-F55EA86091B7} = {AE371488-29C5-40A8-B4E0-B9CC218A21C1}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://dsac.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Denuncia.Presentacion.MVC.Web\\Denuncia.Presentacion.MVC.Web.csproj
+		SccProjectTopLevelParentUniqueName1 = SAG-DenunciaFitoSanitaria.sln
+		SccProjectName1 = Denuncia.Presentacion.MVC.Web
+		SccLocalPath1 = Denuncia.Presentacion.MVC.Web
+		SccProjectUniqueName2 = Denuncia.Entidad\\Denuncia.Entidad.csproj
+		SccProjectTopLevelParentUniqueName2 = SAG-DenunciaFitoSanitaria.sln
+		SccProjectName2 = Denuncia.Entidad
+		SccLocalPath2 = Denuncia.Entidad
+		SccProjectUniqueName3 = Denuncia.Negocio\\Denuncia.Negocio.csproj
+		SccProjectTopLevelParentUniqueName3 = SAG-DenunciaFitoSanitaria.sln
+		SccProjectName3 = Denuncia.Negocio
+		SccLocalPath3 = Denuncia.Negocio
+		SccProjectUniqueName4 = Denuncia.Datos\\Denuncia.Datos.csproj
+		SccProjectTopLevelParentUniqueName4 = SAG-DenunciaFitoSanitaria.sln
+		SccProjectName4 = Denuncia.Datos
+		SccLocalPath4 = Denuncia.Datos
+		SccProjectUniqueName5 = Denuncia.Transversal.Contenedor\\Denuncia.Transversal.Contenedor.csproj
+		SccProjectTopLevelParentUniqueName5 = SAG-DenunciaFitoSanitaria.sln
+		SccProjectName5 = Denuncia.Transversal.Contenedor
+		SccLocalPath5 = Denuncia.Transversal.Contenedor
+	EndGlobalSection
+EndGlobal

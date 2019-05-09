@@ -1,0 +1,168 @@
+﻿@model Denuncia.Presentacion.MVC.Web.Models.SolicitudDenunciaModel
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+    <h4 class="modal-title">
+        <text>Denuncia N°: @Model.IdDenuncia</text>
+    </h4>
+</div>
+@using (Html.BeginForm("ModificarDenuncia", "SolicitudDenuncia", FormMethod.Post, new { @id = "formDenuncia", @class = "form-horizontal", @role = "form" }))
+{
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.EstadoDenuncia, "Estado", new { @class = "control-label col-md-6" })
+                <div class="col-md-6">
+                    @Html.DropDownListFor(model => model.IdEstadoDenuncia, Model.ListaEstado, new { @class = "form-control input-sm", @disabled = "disabled" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.TipoDenuncia, "Tipo", new { @class = "control-label col-md-6" })
+                <div class="col-md-6">
+                    @Html.DropDownListFor(model => model.IdTipoDenuncia, Model.listTipo, new { @class = "form-control input-sm", @disabled = "disabled" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Categoria, new { @class = "control-label col-md-6" })
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => model.subcategoria.Categoria.Nombre, new { @class = "form-control input-sm", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.SubCategoria, new { @class = "control-label col-md-6" })
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => model.subcategoria.Nombre, new { @class = "form-control input-sm", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.TelefonoContacto, new { @class = "control-label col-md-6" })
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => model.TelefonoContacto, new { @class = "form-control input-sm", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.CorreoContacto, new { @class = "control-label col-md-6" })
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => model.CorreoContacto, new { @class = "form-control input-sm", @readonly = "readonly" })
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Descripcion, new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextAreaFor(model => model.DescripcionCortada, new { @class = "form-control input-sm", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Comentario, new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextAreaFor(model => model.Comentario, new { @class = "form-control input-sm", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Direccion, new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.Direccion, new { @class = "form-control input-sm", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Referencia, new { @class = "control-label col-md-3" })
+                <div class="col-md-9">
+                    @Html.TextBoxFor(model => model.Referencia, new { @class = "form-control input-sm", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserAprobacion, new { @class = "control-label col-md-6" })
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => model.UserAprobacion, new { @class = "form-control input-sm", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.FechaAprobacion, new { @class = "control-label col-md-6" })
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => model.FechaAprobacion, new { @class = "form-control input-sm", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.MensajeVoz, new { @class = "control-label col-md-6" })
+                <div class="col-md-6">
+                    <audio controls="controls">
+                        <source src="@Model.MensajeVoz" type="audio/aac" />
+                    </audio>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImagenUrl, new { @class = "control-label col-md-6" })
+                <div class="col-md-6">
+                    <img src="@Model.ImagenUrl" class="img-responsive" style="max-height:200px; max-height:200px;" onclick="window.open('@Model.ImagenUrl', '_blank');" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="map_canvas" class="col-md-8 col-md-offset-3"></div>
+        </div>
+    </div>
+    @Html.Hidden("IdDenuncia", "", new { @class = "hiddenid" })
+    <div class="modal-footer">
+        <button type="button" class="btn btn-circle dark btn-outline" data-dismiss="modal">Cerrar</button>
+    </div>
+}
+<script>
+    InformeGeneral.Mapa(@Model.latitud, @Model.longitud);
+</script>
+

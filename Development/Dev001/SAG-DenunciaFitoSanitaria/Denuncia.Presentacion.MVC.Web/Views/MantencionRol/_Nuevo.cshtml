@@ -1,0 +1,92 @@
+﻿@model Denuncia.Presentacion.MVC.Web.Models.RolModel
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+    <h4 class="modal-title">
+        @if (Model.EsNuevo)
+        { <text>Nuevo Perfil</text>}
+        else
+        {
+            <text>Editar Perfil</text>
+}
+    </h4>
+</div>
+@using (Html.BeginForm(Model.EsNuevo ? "Crear" : "Modificar", "MantencionRol", FormMethod.Post, new { @id = "formRol", @class = "form-horizontal", @role = "form" }))
+{
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nombre, new { @class = "control-label col-md-3" })
+                    <div class="col-md-6">
+
+                        @if (Model.EsNuevo)
+                        {
+                            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control input-sm", @maxlength = "50" })
+                            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                        }
+                        else
+                        {
+                            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control input-sm", @readonly = "readonly" })
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Acceso</label>
+                    <div class="col-md-6">
+                        <div class="portlet light bordered no-margin-bottom">
+                            <div id="tree_2" class="portlet-body tree-demo">
+                            </div>
+                        </div>
+                        @Html.ValidationMessageFor(model => model.Acceso, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="portlet">
+                    <div class="portlet-title">
+                        <div class="caption">
+                            Categoría / Sub-Categoría
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2">
+                                @Html.ListBoxFor(model => model.IdSubCategoria, Model.SubCategoriaMultiSelect, new { @size = 35, @class = "multi-select" })
+                                @Html.ValidationMessageFor(model => model.IdSubCategoria, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-circle dark btn-outline" data-dismiss="modal">Cerrar</button>
+        <button id="btnGuardar" name="btnGuardar" class="btn btn-circle green" type="button"><i class="fa fa-save"></i> Guardar</button>
+    </div>
+}
+<script>
+    $('#tree_2').jstree({
+        'plugins': ["wholerow", "checkbox", "types"],
+        'core': {
+            "themes": {
+                "responsive": false
+            },
+            'data': @Html.Raw(Json.Encode(Model.JsonMenu)),
+        }
+    });
+    $('.multi-select').multiSelect({
+        selectableOptgroup: true,
+        selectableHeader: "<b>Disponible</b>",
+        selectionHeader: "<b>Asignado</b>",
+    });
+    $('.multi-select').next("div").css("width", "100%");
+    $('.ms-list').css("height", "250px");
+</script>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mvcSiteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0"
+            xsi:schemaLocation="http://mvcsitemap.codeplex.com/schemas/MvcSiteMap-File-4.0 MvcSiteMapSchema.xsd">
+
+  <mvcSiteMapNode title="Home" controller="Home" action="Index">
+    <mvcSiteMapNode title="Bandeja de Entrada" controller="SolicitudDenuncia" action="Index" imageUrl="fa fa-list-alt" visibility="1"/>
+    <mvcSiteMapNode title="Informe" clickable="false" imageUrl="fa fa-book" visibility="true">
+      <mvcSiteMapNode title="General" controller="InformeGeneral" action="Index" visibility="10" />
+      <mvcSiteMapNode title="Espacial" controller="InformeEspacial" action="Index" visibility="9" />
+    </mvcSiteMapNode>
+    <mvcSiteMapNode title="Mantención" clickable="false" imageUrl="fa fa-cogs" visibility="true">
+      <mvcSiteMapNode title="Tipo" controller="MantencionTipoDenuncia" action="Index" visibility="3" />
+      <mvcSiteMapNode title="Categoría" controller="MantencionCategoria" action="Index" visibility="4" />
+      <mvcSiteMapNode title="SubCategoría" controller="MantencionSubCategoria" action="Index" visibility="5" />
+      <mvcSiteMapNode title="Usuario" controller="MantencionUsuario" action="Index" visibility="6" />
+      <mvcSiteMapNode title="Perfil" controller="MantencionRol" action="Index" visibility="7" />
+    </mvcSiteMapNode>
+  </mvcSiteMapNode>
+</mvcSiteMap>

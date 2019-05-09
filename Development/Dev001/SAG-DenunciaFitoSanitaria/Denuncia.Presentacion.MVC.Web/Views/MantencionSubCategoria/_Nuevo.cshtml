@@ -1,0 +1,332 @@
+﻿@model Denuncia.Presentacion.MVC.Web.Models.SubCategoriaModel
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+    <h4 class="modal-title">
+        @if (Model.EsNuevo)
+        {<text>Nueva Sub-Categoría</text>}
+    else
+    {
+        <text>Editar Sub-Categoría</text>
+    }
+    </h4>
+</div>
+@using (Html.BeginForm(Model.EsNuevo ? "Crear" : "Modificar", "MantencionSubCategoria", FormMethod.Post, new { @id = "formSubCategoria", @class = "form-horizontal", @role = "form", @enctype = "multipart/form-data" }))
+{
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IdCategoria, new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(model => model.IdCategoria, Model.ListaCategorias, new { @class = "form-control input-sm", required = "required" })
+                        @Html.ValidationMessageFor(model => model.IdCategoria, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Nombre, new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control input-sm", @maxlength = "50" })
+                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ImagenUrl, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="fileinput fileinput-new" data-provides="fileinput">
+                            <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                @if (Model.EsNuevo)
+                                {
+                                    <img src="~/assets/apps/img/NoImage.png" alt="" />
+                                }
+                                else
+                                {
+                                    var imagen = Model.ImagenUrl;
+                                    <img src="@Url.Content(Model.ImagenUrl)" alt="" />
+                                }
+                            </div>
+                            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                            <div class="input-group input-large">
+                                <div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
+                                    <i class="fa fa-file fileinput-exists"></i>&nbsp;
+                                    <span class="fileinput-filename"> </span>
+                                </div>
+                                <span class="input-group-addon btn default btn-file btn-xs">
+                                    <span class="fileinput-new"> Examinar </span>
+                                    <span class="fileinput-exists"> Cambiar </span>
+                                    <input type="file" id="fileSubCategoria" name="fileSubCategoria" />
+                                </span>
+                                <a href="javascript:;" class="input-group-addon btn red fileinput-exists" data-dismiss="fileinput"> Eliminar </a>
+                            </div>
+                            @Html.ValidationMessageFor(model => model.FotoImagen, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Descripcion, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Descripcion, new { @class = "form-control input-sm", @rows = "5", @style = "resize:none;" })
+                        @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Anonimo, new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <input id="switchAnonimo" name="switchAnonimo" class="make-switch" type="checkbox" @if (Model.EsNuevo || Model.Anonimo) { <text> checked </text> } data-on-text="Si" data-off-text="No" data-size="small" data-toggle="toggle">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label col-md-2" for="Estado">Activar Estado</label>
+                    <div class="col-md-10">
+                        <input id="switchEstado" name="switchEstado" class="make-switch" type="checkbox" @if (Model.EsNuevo) { <text> disabled checked </text>  } else if (Model.Estado) { <text> checked </text> } data-on-text="Si" data-off-text="No" data-size="small" data-toggle="toggle">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel-group accordion" id="accordion1">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse_1"> Imágen #1 </a>
+                            </h4>
+                        </div>
+                        <div id="collapse_1" class="panel-collapse in">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.SubCategoria_Imagenes.Imagen1, new { @class = "control-label col-md-3" })
+                                            <div class="col-md-9">
+                                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                    <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                        @if (Model.EsNuevo || Model.SubCategoria_Imagenes.Imagen1 == null)
+                                                        {
+                                                            <img src="~/assets/apps/img/NoImage.png" alt="" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="@Url.Content(Model.SubCategoria_Imagenes.Imagen1)" alt="" />
+                                                        }
+                                                    </div>
+                                                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                    <div>
+                                                        <span class="btn default btn-file">
+                                                            <span class="fileinput-new"> Examinar </span>
+                                                            <span class="fileinput-exists"> Cambiar </span>
+                                                            <input type="file" id="fileImagen1" name="fileImagen1" />
+                                                        </span>
+                                                        <a href="javascript:;" class="btn red" data-dismiss="fileinput"> Eliminar </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.SubCategoria_Imagenes.Descripcion1, new { @class = "control-label col-md-3" })
+                                            <div class="col-md-9">
+                                                @Html.TextAreaFor(model => model.SubCategoria_Imagenes.Descripcion1, new { @class = "form-control input-sm", @maxlength = "150", @rows = "10", @style = "resize:none;" })
+                                                @Html.ValidationMessageFor(model => model.SubCategoria_Imagenes.Descripcion1, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.SubCategoria_Imagenes.Imagen1, "", new { @class = "text-danger" })
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse_2"> Imágen #2 </a>
+                            </h4>
+                        </div>
+                        <div id="collapse_2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.SubCategoria_Imagenes.Imagen2, new { @class = "control-label col-md-3" })
+                                            <div class="col-md-9">
+                                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                    <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                        @if (Model.EsNuevo || Model.SubCategoria_Imagenes.Imagen2 == null)
+                                                        {
+                                                            <img src="~/assets/apps/img/NoImage.png" alt="" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="@Url.Content(Model.SubCategoria_Imagenes.Imagen2)" alt="" />
+                                                        }
+                                                    </div>
+                                                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                    <div>
+                                                        <span class="btn default btn-file">
+                                                            <span class="fileinput-new"> Examinar </span>
+                                                            <span class="fileinput-exists"> Cambiar </span>
+                                                            <input type="file" id="fileImagen2" name="fileImagen2" />
+                                                        </span>
+                                                        <a href="javascript:;" class="btn red" data-dismiss="fileinput"> Eliminar </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.SubCategoria_Imagenes.Descripcion2, new { @class = "control-label col-md-3" })
+                                            <div class="col-md-9">
+                                                @Html.TextAreaFor(model => model.SubCategoria_Imagenes.Descripcion2, new { @class = "form-control input-sm", @maxlength = "150", @rows = "10", @style = "resize:none;" })
+                                                @Html.ValidationMessageFor(model => model.SubCategoria_Imagenes.Descripcion2, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.SubCategoria_Imagenes.Imagen2, "", new { @class = "text-danger" })
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse_3"> Imágen #3 </a>
+                            </h4>
+                        </div>
+                        <div id="collapse_3" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.SubCategoria_Imagenes.Imagen3, new { @class = "control-label col-md-3" })
+                                            <div class="col-md-9">
+                                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                    <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                        @if (Model.EsNuevo || Model.SubCategoria_Imagenes.Imagen3 == null)
+                                                        {
+                                                            <img src="~/assets/apps/img/NoImage.png" alt="" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="@Url.Content(Model.SubCategoria_Imagenes.Imagen3)" alt="" />
+                                                        }
+                                                    </div>
+                                                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                    <div>
+                                                        <span class="btn default btn-file">
+                                                            <span class="fileinput-new"> Examinar </span>
+                                                            <span class="fileinput-exists"> Cambiar </span>
+                                                            <input type="file" id="fileImagen3" name="fileImagen3" />
+                                                        </span>
+                                                        <a href="javascript:;" class="btn red" data-dismiss="fileinput"> Eliminar </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.SubCategoria_Imagenes.Descripcion3, new { @class = "control-label col-md-3" })
+                                            <div class="col-md-9">
+                                                @Html.TextAreaFor(model => model.SubCategoria_Imagenes.Descripcion3, new { @class = "form-control input-sm", @maxlength = "150", @rows = "10", @style = "resize:none;" })
+                                                @Html.ValidationMessageFor(model => model.SubCategoria_Imagenes.Descripcion3, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.SubCategoria_Imagenes.Imagen3, "", new { @class = "text-danger" })
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse_4"> Imágen #4 </a>
+                            </h4>
+                        </div>
+                        <div id="collapse_4" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.SubCategoria_Imagenes.Imagen4, new { @class = "control-label col-md-3" })
+                                            <div class="col-md-9">
+                                                <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                    <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                                                        @if (Model.EsNuevo || Model.SubCategoria_Imagenes.Imagen4 == null)
+                                                        {
+                                                            <img src="~/assets/apps/img/NoImage.png" alt="" />
+                                                        }
+                                                        else
+                                                        {
+                                                            <img src="@Url.Content(Model.SubCategoria_Imagenes.Imagen4)" alt="" />
+                                                        }
+                                                    </div>
+                                                    <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                    <div>
+                                                        <span class="btn default btn-file">
+                                                            <span class="fileinput-new"> Examinar </span>
+                                                            <span class="fileinput-exists"> Cambiar </span>
+                                                            <input type="file" id="fileImagen4" name="fileImagen4" />
+                                                        </span>
+                                                        <a href="javascript:;" class="btn red" data-dismiss="fileinput"> Eliminar </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.SubCategoria_Imagenes.Descripcion4, new { @class = "control-label col-md-3" })
+                                            <div class="col-md-9">
+                                                @Html.TextAreaFor(model => model.SubCategoria_Imagenes.Descripcion4, new { @class = "form-control input-sm", @maxlength = "150", @rows = "10", @style = "resize:none;" })
+                                                @Html.ValidationMessageFor(model => model.SubCategoria_Imagenes.Descripcion4, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.SubCategoria_Imagenes.Imagen4, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.HiddenFor(model => model.EsNuevo)
+
+    if (!Model.EsNuevo)
+    {
+        @Html.HiddenFor(model => model.IdSubCategoria)
+        @Html.HiddenFor(model => model.ImagenUrl)
+        @Html.HiddenFor(model => model.SubCategoria_Imagenes.Imagen1)
+        @Html.HiddenFor(model => model.SubCategoria_Imagenes.Imagen2)
+        @Html.HiddenFor(model => model.SubCategoria_Imagenes.Imagen3)
+        @Html.HiddenFor(model => model.SubCategoria_Imagenes.Imagen4)
+    }
+    <div class="modal-footer">
+        <button type="button" class="btn btn-circle dark btn-outline" data-dismiss="modal">Cerrar</button>
+        <button id="btnGuardar" name="btnGuardar" class="btn btn-circle green" type="button"><i class="fa fa-save"></i> Guardar</button>
+    </div>
+}

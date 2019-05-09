@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CFBF500A-8E4A-4006-8C86-A5718D936C12}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Denuncia.Datos</RootNamespace>
+    <AssemblyName>Denuncia.Datos</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\BaseRepositorio.cs" />
+    <Compile Include="Core\DenunciaFitoSanitariaContext.cs" />
+    <Compile Include="Core\Specification\AndSpecification.cs" />
+    <Compile Include="Core\Specification\CompositeSpecification.cs" />
+    <Compile Include="Core\Specification\DirectSpecification.cs" />
+    <Compile Include="Core\Specification\ExpressionBuilder.cs" />
+    <Compile Include="Core\Specification\ISpecification.cs" />
+    <Compile Include="Core\Specification\NotSpecification.cs" />
+    <Compile Include="Core\Specification\OrSpecification.cs" />
+    <Compile Include="Core\Specification\ParametersRebinder.cs" />
+    <Compile Include="Core\Specification\Specification.cs" />
+    <Compile Include="Core\Specification\TrueSpecification.cs" />
+    <Compile Include="Modelo\DenunciaFitoSanitariaDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DenunciaFitoSanitariaDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\DenunciaFitoSanitariaDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DenunciaFitoSanitariaDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorio\CategoriaRepositorio.cs" />
+    <Compile Include="Repositorio\EstadoRepositorio.cs" />
+    <Compile Include="Repositorio\RolAcessoWebSiteMapRepositorio.cs" />
+    <Compile Include="Repositorio\SolicitudDenunciaRepositorio.cs" />
+    <Compile Include="Repositorio\SubCategoriaImagenesRepositorio.cs" />
+    <Compile Include="Repositorio\UserRepositorio.cs" />
+    <Compile Include="Repositorio\WebSiteMapRepositorio.cs" />
+    <Compile Include="Repositorio\TipoDenunciaRepositorio.cs" />
+    <Compile Include="Repositorio\SubCategoriaRepositorio.cs" />
+    <Compile Include="Repositorio\RoleRepositorio.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="Modelo\DenunciaFitoSanitariaDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DenunciaFitoSanitariaDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Modelo\DenunciaFitoSanitariaDataModel.edmx.diagram">
+      <DependentUpon>DenunciaFitoSanitariaDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Denuncia.Entidad\Denuncia.Entidad.csproj">
+      <Project>{f492bc7e-bab5-4644-b66c-ee2ca12b70d9}</Project>
+      <Name>Denuncia.Entidad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Denuncia.Transversal.Contenedor\Denuncia.Transversal.Contenedor.csproj">
+      <Project>{d9b588fb-b146-49c5-9fd5-f55ea86091b7}</Project>
+      <Name>Denuncia.Transversal.Contenedor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Modelo\DenunciaFitoSanitariaDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DenunciaFitoSanitariaDataModel.edmx</DependentUpon>
+      <LastGenOutput>DenunciaFitoSanitariaDataModel.Context.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

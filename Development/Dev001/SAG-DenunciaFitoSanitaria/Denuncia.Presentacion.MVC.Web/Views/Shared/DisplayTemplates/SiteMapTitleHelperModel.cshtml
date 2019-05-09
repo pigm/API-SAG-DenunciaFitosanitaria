@@ -1,0 +1,11 @@
+﻿@model MvcSiteMapProvider.Web.Html.Models.SiteMapTitleHelperModel
+@using System.Web.Mvc.Html
+@using MvcSiteMapProvider.Web.Html.Models
+@if (Model.CurrentNode != null)
+{
+    <div class="page-title">
+        <h1>
+            @Model.CurrentNode.Title
+        </h1>
+    </div>
+}

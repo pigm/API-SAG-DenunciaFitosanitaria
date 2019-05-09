@@ -1,0 +1,75 @@
+.page-header .page-logo IMG {
+    margin: 13px 0 0 !important;
+}
+
+
+.page-header.navbar {
+    background: url(../../../apps/img/header-fondo.png) 0 0 / 650px 100% no-repeat #37465C;
+}
+
+.page-header .username {
+    display: inline-block;
+    margin-top: 27px;
+    color: rgba(255, 255, 255, 0.598);
+    font-weight: lighter;
+}
+
+@media (max-width: 767px) {
+    .page-header.navbar {
+        background: #AAEC78;
+        border-bottom: none;
+    }
+
+        .page-header.navbar .page-top {
+            background: #AAEC78;
+        }
+}
+
+.login {
+    background-color: #009960 !important;
+    background-image: url(../../../apps/img/fondo-login.jpg);
+    background-repeat: no-repeat;
+    background-size: 120% 200%;
+}
+
+.page-header.navbar .top-menu .navbar-nav > LI.dropdown > .dropdown-toggle {
+    margin: 0;
+    padding: 0px 12px 27px;
+}
+
+.page-header.navbar .top-menu .navbar-nav > LI.dropdown .dropdown-toggle:hover {
+    background-color: #3D4F6C;
+}
+
+.table-condensed > TBODY > TR > TD, .table-condensed > TBODY > TR > TH, .table-condensed > TFOOT > TR > TD, .table-condensed > TFOOT > TR > TH, .table-condensed > THEAD > TR > TD, .table-condensed > THEAD > TR > TH {
+    padding: 5px;
+    font-size: 12px;
+}
+
+.page-sidebar-menu .copyright
+{
+	text-align: center !important;
+	font-size: 13px;
+	display: block;
+	/*+placement: displace;*/
+	position: absolute;
+	margin-left: 0;
+	margin-top: 0;
+	margin-top: 36px;
+	color: black;
+	padding: 60px 30px 25px;
+	font-weight: lighter;
+	background-image: url(../../../apps/img/jigsaw.png);
+	background-repeat: no-repeat;
+	background-position-x: center;
+	background-size: 46px 50px;
+	opacity: 0.4 !important;
+}
+.page-sidebar-menu .copyright STRONG
+{
+	display: block;
+	font-weight: bold;
+	font-style: normal;
+	color: black;
+}
+

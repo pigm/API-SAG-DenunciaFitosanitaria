@@ -1,0 +1,56 @@
+﻿@model Denuncia.Presentacion.MVC.Web.Models.SolicitudDenunciaModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption">Resultado</div>
+                <div class="tools">
+                    <a href="" class="fullscreen" data-original-title="" title=""> </a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover table-bordered table-condensed" id="datatable_DenunciasInforme">
+                            <thead>
+                                <tr>
+                                    <th>Tipo</th>
+                                    <th>Categoría</th>
+                                    <th>Sub Categoría</th>
+                                    <th>Regi&oacute;n</th>
+                                    <th>Comuna</th>
+                                    <th>Estado</th>
+                                    <th>Fecha Env&iacute;o</th>
+                                    <th>Acci&oacute;n</th>
+                                    @*Columnas ocultas para busqueda*@
+                                    <th>Descripcion</th>
+                                    <th>Comentarios</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in @Model.ListaDenunciasInforme)
+                                {
+                                    <tr>
+
+                                        <td>@Html.DisplayFor(modelItem => item.TipoDenuncia)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Categoria)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.SubCategoria)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Region)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Comuna)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.EstadoDenuncia)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.FechaEnvio)</td>
+                                        <td>
+                                            <a id="Ver" class="btn btn-xs green" href="@Url.Action("VerDenuncia", "InformeGeneral", new { idDenuncia = item.IdDenuncia, Denuncia = item.TipoDenuncia})" da data-toggle="modal" data-target="#ModalDenuncia"><i class="fa fa-eye"></i> Ver</a>
+                                        </td>
+                                        <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Comentario)</td>
+                                    </tr>
+                                }
+                            <tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

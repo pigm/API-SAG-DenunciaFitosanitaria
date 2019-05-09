@@ -1,0 +1,66 @@
+﻿@model Denuncia.Presentacion.MVC.Web.Models.UsuarioModel
+
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+    <h4 class="modal-title">
+        @if (Model.EsNuevo)
+        { <text>Nuevo Usuario</text>}
+        else
+        {
+            <text>Editar Usuario</text>
+        }
+    </h4>
+</div>
+@using (Html.BeginForm(Model.EsNuevo ? "Crear" : "Modificar", "MantencionUsuario", FormMethod.Post, new { @id = "formUsuario", @class = "form-horizontal", @role = "form" }))
+{
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Rol, new { @class = "control-label col-md-3" })
+                    <div class="col-md-6">
+                        @Html.DropDownListFor(model => model.Rol, Model.ListaRol, new { @class = "form-control input-sm" })
+                        @Html.ValidationMessageFor(model => model.Rol, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-3" })
+                    <div class="col-md-6">
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control input-sm", @maxlength = "50" })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label class="control-label col-md-3" for="ModificaDenuncia">Modificar/Atender Denuncia</label>
+                    <div class="col-md-6">
+                        <label class="mt-checkbox-inline">
+                            @Html.CheckBoxFor(model => model.ModificaDenuncia, new { @class = "mt-checkbox-inline" })
+                            <span></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.HiddenFor(model => model.EsNuevo)
+    if (!Model.EsNuevo)
+    {
+        @Html.HiddenFor(model => model.IdUsuario)
+    }
+    <div class="modal-footer">
+        <button type="button" class="btn btn-circle dark btn-outline" data-dismiss="modal">Cerrar</button>
+        <button id="btnGuardar" name="btnGuardar" class="btn btn-circle green" type="button"><i class="fa fa-save"></i> Guardar</button>
+    </div>
+}
+<script>
+    
+</script>
+

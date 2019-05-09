@@ -1,0 +1,87 @@
+﻿@model List<Denuncia.Presentacion.MVC.Web.Models.TipoDenunciaModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Metronic.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption font-green-sharp">
+                    <span class="caption-subject bold uppercase"> Mantenedor Tipo</span>
+                </div>
+                <div class="tools">
+                    <a href="" class="fullscreen" data-original-title="" title=""> </a>
+                </div>
+                <div class="actions">
+                    <div class="btn-group">
+                        <a class="btn btn-circle default btn-sm" href="@Url.Action("Nuevo", "MantencionTipoDenuncia")" data-toggle="modal" data-target="#ModalTipoDenuncia">
+                            <i class="fa fa-plus"></i> Nuevo
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-striped table-hover table-bordered" id="datatable_TipoDenuncia">
+                            <thead>
+                                <tr>
+                                    <th>IdTipoDenuncia</th>
+                                    <th>Estado</th>
+                                    <th>Nombre</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in @Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(modelItem => item.IdTipoDenuncia)</td>
+                                        <td>
+                                            @if (item.Estado)
+                                            {<span class='label label-sm label-success'>Activo</span>}
+                                            else
+                                            {<span class='label label-sm label-danger'>Inactivo</span>}
+                                        </td>
+                                        <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                                        <td>
+                                            <a id="Editar" class="btn btn-xs purple" href="@Url.Action("Editar", "MantencionTipoDenuncia", new { idTipoDenuncia = item.IdTipoDenuncia})" data-toggle="modal" data-target="#ModalTipoDenuncia"><i class="fa fa-edit"></i> Editar</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="ModalTipoDenuncia" class="modal fade in" tabindex="-1" data-replace="true" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/MantencionTipoDenuncia/script")
+    <script>
+        $(document).ready(function () {
+            MantencionTipoDenuncia.Init();
+        });
+    </script>
+    @if (TempData["msg"] != null)
+    {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var msg = "@Html.AttributeEncode(TempData["msg"])";
+                toastr["success"](msg, "SAG-Denuncia FitoSanitaria");
+            });
+        </script>
+    }
+}
+

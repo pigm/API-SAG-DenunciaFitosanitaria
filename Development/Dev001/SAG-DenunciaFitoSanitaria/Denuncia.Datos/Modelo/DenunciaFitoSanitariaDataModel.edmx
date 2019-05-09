@@ -1,0 +1,1486 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbDenunciaFitoSanitariaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ApiToken">
+          <Key>
+            <PropertyRef Name="ApiTokenID" />
+          </Key>
+          <Property Name="ApiTokenID" Type="int" Nullable="false" />
+          <Property Name="ApiTokenName" Type="varchar" MaxLength="50" />
+          <Property Name="ApiTokenPass" Type="varchar" MaxLength="50" />
+          <Property Name="ApiName" Type="varchar" MaxLength="50" />
+          <Property Name="ApiEstado" Type="int" />
+        </EntityType>
+        <EntityType Name="aspnet_Applications">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="LoweredApplicationName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="aspnet_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PasswordFormat" Type="int" Nullable="false" />
+          <Property Name="PasswordSalt" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="MobilePIN" Type="nvarchar" MaxLength="16" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="LoweredEmail" Type="nvarchar" MaxLength="256" />
+          <Property Name="PasswordQuestion" Type="nvarchar" MaxLength="256" />
+          <Property Name="PasswordAnswer" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsApproved" Type="bit" Nullable="false" />
+          <Property Name="IsLockedOut" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLoginDate" Type="datetime" Nullable="false" />
+          <Property Name="LastPasswordChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLockoutDate" Type="datetime" Nullable="false" />
+          <Property Name="FailedPasswordAttemptCount" Type="int" Nullable="false" />
+          <Property Name="FailedPasswordAttemptWindowStart" Type="datetime" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptCount" Type="int" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="datetime" Nullable="false" />
+          <Property Name="Comment" Type="ntext" />
+        </EntityType>
+        <EntityType Name="aspnet_Paths">
+          <Key>
+            <PropertyRef Name="PathId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PathId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Path" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="LoweredPath" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnet_PersonalizationAllUsers">
+          <Key>
+            <PropertyRef Name="PathId" />
+          </Key>
+          <Property Name="PathId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PageSettings" Type="image" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnet_PersonalizationPerUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PathId" Type="uniqueidentifier" />
+          <Property Name="UserId" Type="uniqueidentifier" />
+          <Property Name="PageSettings" Type="image" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnet_Profile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PropertyNames" Type="ntext" Nullable="false" />
+          <Property Name="PropertyValuesString" Type="ntext" Nullable="false" />
+          <Property Name="PropertyValuesBinary" Type="image" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnet_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="LoweredRoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="aspnet_SchemaVersions">
+          <Key>
+            <PropertyRef Name="Feature" />
+            <PropertyRef Name="CompatibleSchemaVersion" />
+          </Key>
+          <Property Name="Feature" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="CompatibleSchemaVersion" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="IsCurrentVersion" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnet_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="LoweredUserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="MobileAlias" Type="nvarchar" MaxLength="16" />
+          <Property Name="IsAnonymous" Type="bit" Nullable="false" />
+          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'dbDenunciaFitoSanitaria.dbo.aspnet_UsersInRoles' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="aspnet_UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnet_WebEvent_Events">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="char" MaxLength="32" Nullable="false" />
+          <Property Name="EventTimeUtc" Type="datetime" Nullable="false" />
+          <Property Name="EventTime" Type="datetime" Nullable="false" />
+          <Property Name="EventType" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="EventSequence" Type="decimal" Precision="19" Scale="0" Nullable="false" />
+          <Property Name="EventOccurrence" Type="decimal" Precision="19" Scale="0" Nullable="false" />
+          <Property Name="EventCode" Type="int" Nullable="false" />
+          <Property Name="EventDetailCode" Type="int" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="1024" />
+          <Property Name="ApplicationPath" Type="nvarchar" MaxLength="256" />
+          <Property Name="ApplicationVirtualPath" Type="nvarchar" MaxLength="256" />
+          <Property Name="MachineName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="RequestUrl" Type="nvarchar" MaxLength="1024" />
+          <Property Name="ExceptionType" Type="nvarchar" MaxLength="256" />
+          <Property Name="Details" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTipoDenuncia" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="250" />
+          <Property Name="ImagenUrl" Type="varchar(max)" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Denuncia">
+          <Key>
+            <PropertyRef Name="IdDenuncia" />
+          </Key>
+          <Property Name="IdDenuncia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdEstadoDenuncia" Type="int" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="CorreoContacto" Type="varchar" MaxLength="50" />
+          <Property Name="TelefonoContacto" Type="varchar" MaxLength="50" />
+          <Property Name="FechaEnvio" Type="datetime" Nullable="false" />
+          <Property Name="MensajeVoz" Type="varchar(max)" />
+          <Property Name="ImagenUrl" Type="varchar(max)" />
+          <Property Name="latitud" Type="varchar" MaxLength="250" />
+          <Property Name="longitud" Type="varchar" MaxLength="250" />
+          <Property Name="idSubCategoria" Type="int" />
+          <Property Name="Comuna" Type="varchar" MaxLength="250" />
+          <Property Name="Region" Type="varchar" MaxLength="250" />
+          <Property Name="Georeferencia" Type="varchar(max)" />
+          <Property Name="Comentario" Type="varchar(max)" />
+          <Property Name="UserAprobacion" Type="varchar" MaxLength="50" />
+          <Property Name="FechaAprobacion" Type="datetime" />
+          <Property Name="DenunciaRapida" Type="bit" />
+        </EntityType>
+        <EntityType Name="EstadoDenuncia">
+          <Key>
+            <PropertyRef Name="IdEstadoDenuncia" />
+          </Key>
+          <Property Name="IdEstadoDenuncia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role_SubCategoria">
+          <Key>
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="IdSubCategoria" />
+          </Key>
+          <Property Name="RoleId" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="IdSubCategoria" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RolesAccesosWebSiteMap">
+          <Key>
+            <PropertyRef Name="RoleName" />
+            <PropertyRef Name="WebSiteMapId" />
+          </Key>
+          <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="WebSiteMapId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubCategoria">
+          <Key>
+            <PropertyRef Name="IdSubCategoria" />
+          </Key>
+          <Property Name="IdSubCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdCategoria" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+          <Property Name="ImagenUrl" Type="varchar(max)" />
+          <Property Name="Anonimo" Type="bit" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubCategoria_Imagenes">
+          <Key>
+            <PropertyRef Name="IdSubCategoria" />
+          </Key>
+          <Property Name="IdSubCategoria" Type="int" Nullable="false" />
+          <Property Name="Imagen1" Type="varchar(max)" />
+          <Property Name="Descripcion1" Type="varchar(max)" />
+          <Property Name="Imagen2" Type="varchar(max)" />
+          <Property Name="Descripcion2" Type="varchar(max)" />
+          <Property Name="Imagen3" Type="varchar(max)" />
+          <Property Name="Descripcion3" Type="varchar(max)" />
+          <Property Name="Imagen4" Type="varchar(max)" />
+          <Property Name="Descripcion4" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="TipoDenuncia">
+          <Key>
+            <PropertyRef Name="IdTipoDenuncia" />
+          </Key>
+          <Property Name="IdTipoDenuncia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="ImagenUrl" Type="varchar(max)" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="Incognito" Type="bit" />
+        </EntityType>
+        <EntityType Name="WebSiteMap">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsClickable" Type="bit" />
+          <Property Name="url" Type="nvarchar" MaxLength="250" />
+          <Property Name="Image" Type="varchar" MaxLength="200" />
+          <Property Name="ParentID" Type="int" />
+        </EntityType>
+        <Association Name="FK__aspnet_Me__Appli__3B75D760">
+          <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
+          <End Role="aspnet_Membership" Type="Self.aspnet_Membership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="aspnet_Membership">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Me__UserI__3C69FB99">
+          <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_Membership" Type="Self.aspnet_Membership" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Membership">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Pa__Appli__3D5E1FD2">
+          <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
+          <End Role="aspnet_Paths" Type="Self.aspnet_Paths" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="aspnet_Paths">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Pe__PathI__3E52440B">
+          <End Role="aspnet_Paths" Type="Self.aspnet_Paths" Multiplicity="1" />
+          <End Role="aspnet_PersonalizationAllUsers" Type="Self.aspnet_PersonalizationAllUsers" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Paths">
+              <PropertyRef Name="PathId" />
+            </Principal>
+            <Dependent Role="aspnet_PersonalizationAllUsers">
+              <PropertyRef Name="PathId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Pe__PathI__3F466844">
+          <End Role="aspnet_Paths" Type="Self.aspnet_Paths" Multiplicity="0..1" />
+          <End Role="aspnet_PersonalizationPerUser" Type="Self.aspnet_PersonalizationPerUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Paths">
+              <PropertyRef Name="PathId" />
+            </Principal>
+            <Dependent Role="aspnet_PersonalizationPerUser">
+              <PropertyRef Name="PathId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Pe__UserI__403A8C7D">
+          <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="0..1" />
+          <End Role="aspnet_PersonalizationPerUser" Type="Self.aspnet_PersonalizationPerUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_PersonalizationPerUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Pr__UserI__412EB0B6">
+          <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_Profile" Type="Self.aspnet_Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Profile">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Ro__Appli__4222D4EF">
+          <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
+          <End Role="aspnet_Roles" Type="Self.aspnet_Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="aspnet_Roles">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Us__Appli__4316F928">
+          <End Role="aspnet_Applications" Type="Self.aspnet_Applications" Multiplicity="1" />
+          <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="aspnet_Users">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Us__RoleI__440B1D61">
+          <End Role="aspnet_Roles" Type="Self.aspnet_Roles" Multiplicity="1" />
+          <End Role="aspnet_UsersInRoles" Type="Self.aspnet_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="aspnet_UsersInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Us__UserI__44FF419A">
+          <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
+          <End Role="aspnet_UsersInRoles" Type="Self.aspnet_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_UsersInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categoria_TipoDenuncia">
+          <End Role="TipoDenuncia" Type="Self.TipoDenuncia" Multiplicity="1" />
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDenuncia">
+              <PropertyRef Name="IdTipoDenuncia" />
+            </Principal>
+            <Dependent Role="Categoria">
+              <PropertyRef Name="IdTipoDenuncia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Denuncia_EstadoDenuncia">
+          <End Role="EstadoDenuncia" Type="Self.EstadoDenuncia" Multiplicity="0..1" />
+          <End Role="Denuncia" Type="Self.Denuncia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoDenuncia">
+              <PropertyRef Name="IdEstadoDenuncia" />
+            </Principal>
+            <Dependent Role="Denuncia">
+              <PropertyRef Name="IdEstadoDenuncia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Denuncia_SubCategoria">
+          <End Role="SubCategoria" Type="Self.SubCategoria" Multiplicity="0..1" />
+          <End Role="Denuncia" Type="Self.Denuncia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategoria">
+              <PropertyRef Name="IdSubCategoria" />
+            </Principal>
+            <Dependent Role="Denuncia">
+              <PropertyRef Name="idSubCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_SubCategoria_aspnet_Roles">
+          <End Role="aspnet_Roles" Type="Self.aspnet_Roles" Multiplicity="1" />
+          <End Role="Role_SubCategoria" Type="Self.Role_SubCategoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="Role_SubCategoria">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Role_SubCategoria_SubCategoria">
+          <End Role="SubCategoria" Type="Self.SubCategoria" Multiplicity="1" />
+          <End Role="Role_SubCategoria" Type="Self.Role_SubCategoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategoria">
+              <PropertyRef Name="IdSubCategoria" />
+            </Principal>
+            <Dependent Role="Role_SubCategoria">
+              <PropertyRef Name="IdSubCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolesAccesosWebSiteMap_WebSiteMap">
+          <End Role="WebSiteMap" Type="Self.WebSiteMap" Multiplicity="1" />
+          <End Role="RolesAccesosWebSiteMap" Type="Self.RolesAccesosWebSiteMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WebSiteMap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RolesAccesosWebSiteMap">
+              <PropertyRef Name="WebSiteMapId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategoria_Imagenes_SubCategoria">
+          <End Role="SubCategoria" Type="Self.SubCategoria" Multiplicity="1" />
+          <End Role="SubCategoria_Imagenes" Type="Self.SubCategoria_Imagenes" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategoria">
+              <PropertyRef Name="IdSubCategoria" />
+            </Principal>
+            <Dependent Role="SubCategoria_Imagenes">
+              <PropertyRef Name="IdSubCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoInsecto_TipoCategoria">
+          <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+          <End Role="SubCategoria" Type="Self.SubCategoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="SubCategoria">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_ListadoDenuncias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="EstadoDenuncia" Type="varchar" Mode="In" />
+          <Parameter Name="TipoDenuncia" Type="varchar" Mode="In" />
+          <Parameter Name="FechaDesde" Type="varchar" Mode="In" />
+          <Parameter Name="FechaHasta" Type="varchar" Mode="In" />
+          <Parameter Name="Categoria" Type="varchar" Mode="In" />
+          <Parameter Name="SubCategoria" Type="varchar" Mode="In" />
+          <Parameter Name="Region" Type="varchar" Mode="In" />
+          <Parameter Name="Comuna" Type="varchar" Mode="In" />
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="dbDenunciaFitoSanitariaModelStoreContainer">
+          <EntitySet Name="ApiToken" EntityType="Self.ApiToken" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="aspnet_Applications" EntityType="Self.aspnet_Applications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="aspnet_Membership" EntityType="Self.aspnet_Membership" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="aspnet_Paths" EntityType="Self.aspnet_Paths" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="aspnet_PersonalizationAllUsers" EntityType="Self.aspnet_PersonalizationAllUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="aspnet_PersonalizationPerUser" EntityType="Self.aspnet_PersonalizationPerUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="aspnet_Profile" EntityType="Self.aspnet_Profile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="aspnet_Roles" EntityType="Self.aspnet_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="aspnet_SchemaVersions" EntityType="Self.aspnet_SchemaVersions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="aspnet_Users" EntityType="Self.aspnet_Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="aspnet_WebEvent_Events" EntityType="Self.aspnet_WebEvent_Events" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Denuncia" EntityType="Self.Denuncia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoDenuncia" EntityType="Self.EstadoDenuncia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role_SubCategoria" EntityType="Self.Role_SubCategoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RolesAccesosWebSiteMap" EntityType="Self.RolesAccesosWebSiteMap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCategoria" EntityType="Self.SubCategoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubCategoria_Imagenes" EntityType="Self.SubCategoria_Imagenes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoDenuncia" EntityType="Self.TipoDenuncia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebSiteMap" EntityType="Self.WebSiteMap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="aspnet_UsersInRoles" EntityType="Self.aspnet_UsersInRoles" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [aspnet_UsersInRoles].[UserId] AS [UserId], 
+    [aspnet_UsersInRoles].[RoleId] AS [RoleId]
+    FROM [dbo].[aspnet_UsersInRoles] AS [aspnet_UsersInRoles]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__aspnet_Me__Appli__3B75D760" Association="Self.FK__aspnet_Me__Appli__3B75D760">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Me__UserI__3C69FB99" Association="Self.FK__aspnet_Me__UserI__3C69FB99">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pa__Appli__3D5E1FD2" Association="Self.FK__aspnet_Pa__Appli__3D5E1FD2">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pe__PathI__3E52440B" Association="Self.FK__aspnet_Pe__PathI__3E52440B">
+            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+            <End Role="aspnet_PersonalizationAllUsers" EntitySet="aspnet_PersonalizationAllUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pe__PathI__3F466844" Association="Self.FK__aspnet_Pe__PathI__3F466844">
+            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+            <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pe__UserI__403A8C7D" Association="Self.FK__aspnet_Pe__UserI__403A8C7D">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pr__UserI__412EB0B6" Association="Self.FK__aspnet_Pr__UserI__412EB0B6">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Ro__Appli__4222D4EF" Association="Self.FK__aspnet_Ro__Appli__4222D4EF">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Us__Appli__4316F928" Association="Self.FK__aspnet_Us__Appli__4316F928">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Us__RoleI__440B1D61" Association="Self.FK__aspnet_Us__RoleI__440B1D61">
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+            <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Us__UserI__44FF419A" Association="Self.FK__aspnet_Us__UserI__44FF419A">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categoria_TipoDenuncia" Association="Self.FK_Categoria_TipoDenuncia">
+            <End Role="TipoDenuncia" EntitySet="TipoDenuncia" />
+            <End Role="Categoria" EntitySet="Categoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Denuncia_EstadoDenuncia" Association="Self.FK_Denuncia_EstadoDenuncia">
+            <End Role="EstadoDenuncia" EntitySet="EstadoDenuncia" />
+            <End Role="Denuncia" EntitySet="Denuncia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Denuncia_SubCategoria" Association="Self.FK_Denuncia_SubCategoria">
+            <End Role="SubCategoria" EntitySet="SubCategoria" />
+            <End Role="Denuncia" EntitySet="Denuncia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_SubCategoria_aspnet_Roles" Association="Self.FK_Role_SubCategoria_aspnet_Roles">
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+            <End Role="Role_SubCategoria" EntitySet="Role_SubCategoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Role_SubCategoria_SubCategoria" Association="Self.FK_Role_SubCategoria_SubCategoria">
+            <End Role="SubCategoria" EntitySet="SubCategoria" />
+            <End Role="Role_SubCategoria" EntitySet="Role_SubCategoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolesAccesosWebSiteMap_WebSiteMap" Association="Self.FK_RolesAccesosWebSiteMap_WebSiteMap">
+            <End Role="WebSiteMap" EntitySet="WebSiteMap" />
+            <End Role="RolesAccesosWebSiteMap" EntitySet="RolesAccesosWebSiteMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategoria_Imagenes_SubCategoria" Association="Self.FK_SubCategoria_Imagenes_SubCategoria">
+            <End Role="SubCategoria" EntitySet="SubCategoria" />
+            <End Role="SubCategoria_Imagenes" EntitySet="SubCategoria_Imagenes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoInsecto_TipoCategoria" Association="Self.FK_TipoInsecto_TipoCategoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="SubCategoria" EntitySet="SubCategoria" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbDenunciaFitoSanitariaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="dbDenunciaFitoSanitariaEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="sp_ListadoDenuncias" ReturnType="Collection(dbDenunciaFitoSanitariaModel.sp_ListadoDenuncias_Result)">
+            <Parameter Name="EstadoDenuncia" Mode="In" Type="String" />
+            <Parameter Name="TipoDenuncia" Mode="In" Type="String" />
+            <Parameter Name="FechaDesde" Mode="In" Type="String" />
+            <Parameter Name="FechaHasta" Mode="In" Type="String" />
+            <Parameter Name="Categoria" Mode="In" Type="String" />
+            <Parameter Name="SubCategoria" Mode="In" Type="String" />
+            <Parameter Name="Region" Mode="In" Type="String" />
+            <Parameter Name="Comuna" Mode="In" Type="String" />
+            <Parameter Name="UserName" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="ApiToken" EntityType="dbDenunciaFitoSanitariaModel.ApiToken" />
+          <EntitySet Name="aspnet_Applications" EntityType="dbDenunciaFitoSanitariaModel.aspnet_Applications" />
+          <EntitySet Name="aspnet_Membership" EntityType="dbDenunciaFitoSanitariaModel.aspnet_Membership" />
+          <EntitySet Name="aspnet_Paths" EntityType="dbDenunciaFitoSanitariaModel.aspnet_Paths" />
+          <EntitySet Name="aspnet_PersonalizationAllUsers" EntityType="dbDenunciaFitoSanitariaModel.aspnet_PersonalizationAllUsers" />
+          <EntitySet Name="aspnet_PersonalizationPerUser" EntityType="dbDenunciaFitoSanitariaModel.aspnet_PersonalizationPerUser" />
+          <EntitySet Name="aspnet_Profile" EntityType="dbDenunciaFitoSanitariaModel.aspnet_Profile" />
+          <EntitySet Name="aspnet_Roles" EntityType="dbDenunciaFitoSanitariaModel.aspnet_Roles" />
+          <EntitySet Name="aspnet_SchemaVersions" EntityType="dbDenunciaFitoSanitariaModel.aspnet_SchemaVersions" />
+          <EntitySet Name="aspnet_Users" EntityType="dbDenunciaFitoSanitariaModel.aspnet_Users" />
+          <EntitySet Name="aspnet_WebEvent_Events" EntityType="dbDenunciaFitoSanitariaModel.aspnet_WebEvent_Events" />
+          <EntitySet Name="Categoria" EntityType="dbDenunciaFitoSanitariaModel.Categoria" />
+          <EntitySet Name="Denuncia" EntityType="dbDenunciaFitoSanitariaModel.Denuncia" />
+          <EntitySet Name="EstadoDenuncia" EntityType="dbDenunciaFitoSanitariaModel.EstadoDenuncia" />
+          <EntitySet Name="RolesAccesosWebSiteMap" EntityType="dbDenunciaFitoSanitariaModel.RolesAccesosWebSiteMap" />
+          <EntitySet Name="SubCategoria" EntityType="dbDenunciaFitoSanitariaModel.SubCategoria" />
+          <EntitySet Name="SubCategoria_Imagenes" EntityType="dbDenunciaFitoSanitariaModel.SubCategoria_Imagenes" />
+          <EntitySet Name="TipoDenuncia" EntityType="dbDenunciaFitoSanitariaModel.TipoDenuncia" />
+          <EntitySet Name="WebSiteMap" EntityType="dbDenunciaFitoSanitariaModel.WebSiteMap" />
+          <AssociationSet Name="FK__aspnet_Me__Appli__3B75D760" Association="dbDenunciaFitoSanitariaModel.FK__aspnet_Me__Appli__3B75D760">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pa__Appli__3D5E1FD2" Association="dbDenunciaFitoSanitariaModel.FK__aspnet_Pa__Appli__3D5E1FD2">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Ro__Appli__4222D4EF" Association="dbDenunciaFitoSanitariaModel.FK__aspnet_Ro__Appli__4222D4EF">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Us__Appli__4316F928" Association="dbDenunciaFitoSanitariaModel.FK__aspnet_Us__Appli__4316F928">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Me__UserI__3C69FB99" Association="dbDenunciaFitoSanitariaModel.FK__aspnet_Me__UserI__3C69FB99">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pe__PathI__3E52440B" Association="dbDenunciaFitoSanitariaModel.FK__aspnet_Pe__PathI__3E52440B">
+            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+            <End Role="aspnet_PersonalizationAllUsers" EntitySet="aspnet_PersonalizationAllUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pe__PathI__3F466844" Association="dbDenunciaFitoSanitariaModel.FK__aspnet_Pe__PathI__3F466844">
+            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+            <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pe__UserI__403A8C7D" Association="dbDenunciaFitoSanitariaModel.FK__aspnet_Pe__UserI__403A8C7D">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pr__UserI__412EB0B6" Association="dbDenunciaFitoSanitariaModel.FK__aspnet_Pr__UserI__412EB0B6">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Categoria_TipoDenuncia" Association="dbDenunciaFitoSanitariaModel.FK_Categoria_TipoDenuncia">
+            <End Role="TipoDenuncia" EntitySet="TipoDenuncia" />
+            <End Role="Categoria" EntitySet="Categoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TipoInsecto_TipoCategoria" Association="dbDenunciaFitoSanitariaModel.FK_TipoInsecto_TipoCategoria">
+            <End Role="Categoria" EntitySet="Categoria" />
+            <End Role="SubCategoria" EntitySet="SubCategoria" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Denuncia_EstadoDenuncia" Association="dbDenunciaFitoSanitariaModel.FK_Denuncia_EstadoDenuncia">
+            <End Role="EstadoDenuncia" EntitySet="EstadoDenuncia" />
+            <End Role="Denuncia" EntitySet="Denuncia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Denuncia_SubCategoria" Association="dbDenunciaFitoSanitariaModel.FK_Denuncia_SubCategoria">
+            <End Role="SubCategoria" EntitySet="SubCategoria" />
+            <End Role="Denuncia" EntitySet="Denuncia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolesAccesosWebSiteMap_WebSiteMap" Association="dbDenunciaFitoSanitariaModel.FK_RolesAccesosWebSiteMap_WebSiteMap">
+            <End Role="WebSiteMap" EntitySet="WebSiteMap" />
+            <End Role="RolesAccesosWebSiteMap" EntitySet="RolesAccesosWebSiteMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SubCategoria_Imagenes_SubCategoria" Association="dbDenunciaFitoSanitariaModel.FK_SubCategoria_Imagenes_SubCategoria">
+            <End Role="SubCategoria" EntitySet="SubCategoria" />
+            <End Role="SubCategoria_Imagenes" EntitySet="SubCategoria_Imagenes" />
+          </AssociationSet>
+          <AssociationSet Name="Role_SubCategoria" Association="dbDenunciaFitoSanitariaModel.Role_SubCategoria">
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+            <End Role="SubCategoria" EntitySet="SubCategoria" />
+          </AssociationSet>
+          <AssociationSet Name="aspnet_UsersInRoles" Association="dbDenunciaFitoSanitariaModel.aspnet_UsersInRoles">
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+          </AssociationSet>
+          </EntityContainer>
+        <ComplexType Name="sp_ListadoDenuncias_Result">
+          <Property Type="Int32" Name="IdDenuncia" Nullable="false" />
+          <Property Type="String" Name="estadoDenuncia" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="tipoDenuncia" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Categoria" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="SubCategoria" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Telefono" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="Fecha" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Comuna" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Region" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="250" />
+          <Property Type="Int32" Name="IdEstadoDenuncia" Nullable="true" />
+          <Property Type="String" Name="latitud" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="longitud" Nullable="true" MaxLength="250" />
+          <Property Type="Boolean" Name="DenunciaRapida" Nullable="true" />
+          <Property Type="String" Name="MensajeVoz" Nullable="true" />
+          <Property Type="String" Name="ImagenUrl" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="ApiToken">
+          <Key>
+            <PropertyRef Name="ApiTokenID" />
+          </Key>
+          <Property Name="ApiTokenID" Type="Int32" Nullable="false" />
+          <Property Name="ApiTokenName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApiTokenPass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApiName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApiEstado" Type="Int32" />
+        </EntityType>
+        <EntityType Name="aspnet_Applications">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LoweredApplicationName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_Membership" Relationship="dbDenunciaFitoSanitariaModel.FK__aspnet_Me__Appli__3B75D760" FromRole="aspnet_Applications" ToRole="aspnet_Membership" />
+          <NavigationProperty Name="aspnet_Paths" Relationship="dbDenunciaFitoSanitariaModel.FK__aspnet_Pa__Appli__3D5E1FD2" FromRole="aspnet_Applications" ToRole="aspnet_Paths" />
+          <NavigationProperty Name="aspnet_Roles" Relationship="dbDenunciaFitoSanitariaModel.FK__aspnet_Ro__Appli__4222D4EF" FromRole="aspnet_Applications" ToRole="aspnet_Roles" />
+          <NavigationProperty Name="aspnet_Users" Relationship="dbDenunciaFitoSanitariaModel.FK__aspnet_Us__Appli__4316F928" FromRole="aspnet_Applications" ToRole="aspnet_Users" />
+        </EntityType>
+        <EntityType Name="aspnet_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordFormat" Type="Int32" Nullable="false" />
+          <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="MobilePIN" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordQuestion" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordAnswer" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FailedPasswordAttemptCount" Type="Int32" Nullable="false" />
+          <Property Name="FailedPasswordAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FailedPasswordAnswerAttemptCount" Type="Int32" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_Applications" Relationship="dbDenunciaFitoSanitariaModel.FK__aspnet_Me__Appli__3B75D760" FromRole="aspnet_Membership" ToRole="aspnet_Applications" />
+          <NavigationProperty Name="aspnet_Users" Relationship="dbDenunciaFitoSanitariaModel.FK__aspnet_Me__UserI__3C69FB99" FromRole="aspnet_Membership" ToRole="aspnet_Users" />
+        </EntityType>
+        <EntityType Name="aspnet_Paths">
+          <Key>
+            <PropertyRef Name="PathId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="PathId" Type="Guid" Nullable="false" />
+          <Property Name="Path" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LoweredPath" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_Applications" Relationship="dbDenunciaFitoSanitariaModel.FK__aspnet_Pa__Appli__3D5E1FD2" FromRole="aspnet_Paths" ToRole="aspnet_Applications" />
+          <NavigationProperty Name="aspnet_PersonalizationAllUsers" Relationship="dbDenunciaFitoSanitariaModel.FK__aspnet_Pe__PathI__3E52440B" FromRole="aspnet_Paths" ToRole="aspnet_PersonalizationAllUsers" />
+          <NavigationProperty Name="aspnet_PersonalizationPerUser" Relationship="dbDenunciaFitoSanitariaModel.FK__aspnet_Pe__PathI__3F466844" FromRole="aspnet_Paths" ToRole="aspnet_PersonalizationPerUser" />
+        </EntityType>
+        <EntityType Name="aspnet_PersonalizationAllUsers">
+          <Key>
+            <PropertyRef Name="PathId" />
+          </Key>
+          <Property Name="PathId" Type="Guid" Nullable="false" />
+          <Property Name="PageSettings" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="aspnet_Paths" Relationship="dbDenunciaFitoSanitariaModel.FK__aspnet_Pe__PathI__3E52440B" FromRole="aspnet_PersonalizationAllUsers" ToRole="aspnet_Paths" />
+        </EntityType>
+        <EntityType Name="aspnet_PersonalizationPerUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="PathId" Type="Guid" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="PageSettings" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="aspnet_Paths" Relationship="dbDenunciaFitoSanitariaModel.FK__aspnet_Pe__PathI__3F466844" FromRole="aspnet_PersonalizationPerUser" ToRole="aspnet_Paths" />
+          <NavigationProperty Name="aspnet_Users" Relationship="dbDenunciaFitoSanitariaModel.FK__aspnet_Pe__UserI__403A8C7D" FromRole="aspnet_PersonalizationPerUser" ToRole="aspnet_Users" />
+        </EntityType>
+        <EntityType Name="aspnet_Profile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="PropertyNames" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PropertyValuesString" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PropertyValuesBinary" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="aspnet_Users" Relationship="dbDenunciaFitoSanitariaModel.FK__aspnet_Pr__UserI__412EB0B6" FromRole="aspnet_Profile" ToRole="aspnet_Users" />
+        </EntityType>
+        <EntityType Name="aspnet_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="RoleId" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LoweredRoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="aspnet_Applications" Relationship="dbDenunciaFitoSanitariaModel.FK__aspnet_Ro__Appli__4222D4EF" FromRole="aspnet_Roles" ToRole="aspnet_Applications" />
+          <NavigationProperty Name="SubCategoria" Relationship="dbDenunciaFitoSanitariaModel.Role_SubCategoria" FromRole="aspnet_Roles" ToRole="SubCategoria" />
+          <NavigationProperty Name="aspnet_Users" Relationship="dbDenunciaFitoSanitariaModel.aspnet_UsersInRoles" FromRole="aspnet_Roles" ToRole="aspnet_Users" />
+        </EntityType>
+        <EntityType Name="aspnet_SchemaVersions">
+          <Key>
+            <PropertyRef Name="Feature" />
+            <PropertyRef Name="CompatibleSchemaVersion" />
+          </Key>
+          <Property Name="Feature" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CompatibleSchemaVersion" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IsCurrentVersion" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnet_Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LoweredUserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="MobileAlias" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="aspnet_Applications" Relationship="dbDenunciaFitoSanitariaModel.FK__aspnet_Us__Appli__4316F928" FromRole="aspnet_Users" ToRole="aspnet_Applications" />
+          <NavigationProperty Name="aspnet_Membership" Relationship="dbDenunciaFitoSanitariaModel.FK__aspnet_Me__UserI__3C69FB99" FromRole="aspnet_Users" ToRole="aspnet_Membership" />
+          <NavigationProperty Name="aspnet_PersonalizationPerUser" Relationship="dbDenunciaFitoSanitariaModel.FK__aspnet_Pe__UserI__403A8C7D" FromRole="aspnet_Users" ToRole="aspnet_PersonalizationPerUser" />
+          <NavigationProperty Name="aspnet_Profile" Relationship="dbDenunciaFitoSanitariaModel.FK__aspnet_Pr__UserI__412EB0B6" FromRole="aspnet_Users" ToRole="aspnet_Profile" />
+          <NavigationProperty Name="aspnet_Roles" Relationship="dbDenunciaFitoSanitariaModel.aspnet_UsersInRoles" FromRole="aspnet_Users" ToRole="aspnet_Roles" />
+        </EntityType>
+        <EntityType Name="aspnet_WebEvent_Events">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="String" Nullable="false" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="EventTimeUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EventTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EventType" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EventSequence" Type="Decimal" Nullable="false" Precision="19" Scale="0" />
+          <Property Name="EventOccurrence" Type="Decimal" Nullable="false" Precision="19" Scale="0" />
+          <Property Name="EventCode" Type="Int32" Nullable="false" />
+          <Property Name="EventDetailCode" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationPath" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationVirtualPath" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="MachineName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="RequestUrl" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="ExceptionType" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTipoDenuncia" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ImagenUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TipoDenuncia" Relationship="dbDenunciaFitoSanitariaModel.FK_Categoria_TipoDenuncia" FromRole="Categoria" ToRole="TipoDenuncia" />
+          <NavigationProperty Name="SubCategoria" Relationship="dbDenunciaFitoSanitariaModel.FK_TipoInsecto_TipoCategoria" FromRole="Categoria" ToRole="SubCategoria" />
+        </EntityType>
+        <EntityType Name="Denuncia">
+          <Key>
+            <PropertyRef Name="IdDenuncia" />
+          </Key>
+          <Property Name="IdDenuncia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdEstadoDenuncia" Type="Int32" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CorreoContacto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TelefonoContacto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaEnvio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MensajeVoz" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImagenUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="latitud" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="longitud" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="idSubCategoria" Type="Int32" />
+          <Property Name="Comuna" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Region" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Georeferencia" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Comentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="UserAprobacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaAprobacion" Type="DateTime" Precision="3" />
+          <Property Name="DenunciaRapida" Type="Boolean" />
+          <NavigationProperty Name="EstadoDenuncia" Relationship="dbDenunciaFitoSanitariaModel.FK_Denuncia_EstadoDenuncia" FromRole="Denuncia" ToRole="EstadoDenuncia" />
+          <NavigationProperty Name="SubCategoria" Relationship="dbDenunciaFitoSanitariaModel.FK_Denuncia_SubCategoria" FromRole="Denuncia" ToRole="SubCategoria" />
+        </EntityType>
+        <EntityType Name="EstadoDenuncia">
+          <Key>
+            <PropertyRef Name="IdEstadoDenuncia" />
+          </Key>
+          <Property Name="IdEstadoDenuncia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Denuncia" Relationship="dbDenunciaFitoSanitariaModel.FK_Denuncia_EstadoDenuncia" FromRole="EstadoDenuncia" ToRole="Denuncia" />
+        </EntityType>
+        <EntityType Name="RolesAccesosWebSiteMap">
+          <Key>
+            <PropertyRef Name="RoleName" />
+            <PropertyRef Name="WebSiteMapId" />
+          </Key>
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="WebSiteMapId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="WebSiteMap" Relationship="dbDenunciaFitoSanitariaModel.FK_RolesAccesosWebSiteMap_WebSiteMap" FromRole="RolesAccesosWebSiteMap" ToRole="WebSiteMap" />
+        </EntityType>
+        <EntityType Name="SubCategoria">
+          <Key>
+            <PropertyRef Name="IdSubCategoria" />
+          </Key>
+          <Property Name="IdSubCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdCategoria" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ImagenUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Anonimo" Type="Boolean" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Categoria" Relationship="dbDenunciaFitoSanitariaModel.FK_TipoInsecto_TipoCategoria" FromRole="SubCategoria" ToRole="Categoria" />
+          <NavigationProperty Name="Denuncia" Relationship="dbDenunciaFitoSanitariaModel.FK_Denuncia_SubCategoria" FromRole="SubCategoria" ToRole="Denuncia" />
+          <NavigationProperty Name="SubCategoria_Imagenes" Relationship="dbDenunciaFitoSanitariaModel.FK_SubCategoria_Imagenes_SubCategoria" FromRole="SubCategoria" ToRole="SubCategoria_Imagenes" />
+          <NavigationProperty Name="aspnet_Roles" Relationship="dbDenunciaFitoSanitariaModel.Role_SubCategoria" FromRole="SubCategoria" ToRole="aspnet_Roles" />
+        </EntityType>
+        <EntityType Name="SubCategoria_Imagenes">
+          <Key>
+            <PropertyRef Name="IdSubCategoria" />
+          </Key>
+          <Property Name="IdSubCategoria" Type="Int32" Nullable="false" />
+          <Property Name="Imagen1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Imagen2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion2" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Imagen3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion3" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Imagen4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion4" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SubCategoria" Relationship="dbDenunciaFitoSanitariaModel.FK_SubCategoria_Imagenes_SubCategoria" FromRole="SubCategoria_Imagenes" ToRole="SubCategoria" />
+        </EntityType>
+        <EntityType Name="TipoDenuncia">
+          <Key>
+            <PropertyRef Name="IdTipoDenuncia" />
+          </Key>
+          <Property Name="IdTipoDenuncia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImagenUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="Incognito" Type="Boolean" />
+          <NavigationProperty Name="Categoria" Relationship="dbDenunciaFitoSanitariaModel.FK_Categoria_TipoDenuncia" FromRole="TipoDenuncia" ToRole="Categoria" />
+        </EntityType>
+        <EntityType Name="WebSiteMap">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IsClickable" Type="Boolean" />
+          <Property Name="url" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ParentID" Type="Int32" />
+          <NavigationProperty Name="RolesAccesosWebSiteMap" Relationship="dbDenunciaFitoSanitariaModel.FK_RolesAccesosWebSiteMap_WebSiteMap" FromRole="WebSiteMap" ToRole="RolesAccesosWebSiteMap" />
+        </EntityType>
+        <Association Name="FK__aspnet_Me__Appli__3B75D760">
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_Applications" Role="aspnet_Applications" Multiplicity="1" />
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_Membership" Role="aspnet_Membership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="aspnet_Membership">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Pa__Appli__3D5E1FD2">
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_Applications" Role="aspnet_Applications" Multiplicity="1" />
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_Paths" Role="aspnet_Paths" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="aspnet_Paths">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Ro__Appli__4222D4EF">
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_Applications" Role="aspnet_Applications" Multiplicity="1" />
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_Roles" Role="aspnet_Roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="aspnet_Roles">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Us__Appli__4316F928">
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_Applications" Role="aspnet_Applications" Multiplicity="1" />
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_Users" Role="aspnet_Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Applications">
+              <PropertyRef Name="ApplicationId" />
+            </Principal>
+            <Dependent Role="aspnet_Users">
+              <PropertyRef Name="ApplicationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Me__UserI__3C69FB99">
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_Membership" Role="aspnet_Membership" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Membership">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Pe__PathI__3E52440B">
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_Paths" Role="aspnet_Paths" Multiplicity="1" />
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_PersonalizationAllUsers" Role="aspnet_PersonalizationAllUsers" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Paths">
+              <PropertyRef Name="PathId" />
+            </Principal>
+            <Dependent Role="aspnet_PersonalizationAllUsers">
+              <PropertyRef Name="PathId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Pe__PathI__3F466844">
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_Paths" Role="aspnet_Paths" Multiplicity="0..1" />
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_PersonalizationPerUser" Role="aspnet_PersonalizationPerUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Paths">
+              <PropertyRef Name="PathId" />
+            </Principal>
+            <Dependent Role="aspnet_PersonalizationPerUser">
+              <PropertyRef Name="PathId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Pe__UserI__403A8C7D">
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_Users" Role="aspnet_Users" Multiplicity="0..1" />
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_PersonalizationPerUser" Role="aspnet_PersonalizationPerUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_PersonalizationPerUser">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__aspnet_Pr__UserI__412EB0B6">
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_Profile" Role="aspnet_Profile" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="aspnet_Profile">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Categoria_TipoDenuncia">
+          <End Type="dbDenunciaFitoSanitariaModel.TipoDenuncia" Role="TipoDenuncia" Multiplicity="1" />
+          <End Type="dbDenunciaFitoSanitariaModel.Categoria" Role="Categoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoDenuncia">
+              <PropertyRef Name="IdTipoDenuncia" />
+            </Principal>
+            <Dependent Role="Categoria">
+              <PropertyRef Name="IdTipoDenuncia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TipoInsecto_TipoCategoria">
+          <End Type="dbDenunciaFitoSanitariaModel.Categoria" Role="Categoria" Multiplicity="1" />
+          <End Type="dbDenunciaFitoSanitariaModel.SubCategoria" Role="SubCategoria" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categoria">
+              <PropertyRef Name="IdCategoria" />
+            </Principal>
+            <Dependent Role="SubCategoria">
+              <PropertyRef Name="IdCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Denuncia_EstadoDenuncia">
+          <End Type="dbDenunciaFitoSanitariaModel.EstadoDenuncia" Role="EstadoDenuncia" Multiplicity="0..1" />
+          <End Type="dbDenunciaFitoSanitariaModel.Denuncia" Role="Denuncia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoDenuncia">
+              <PropertyRef Name="IdEstadoDenuncia" />
+            </Principal>
+            <Dependent Role="Denuncia">
+              <PropertyRef Name="IdEstadoDenuncia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Denuncia_SubCategoria">
+          <End Type="dbDenunciaFitoSanitariaModel.SubCategoria" Role="SubCategoria" Multiplicity="0..1" />
+          <End Type="dbDenunciaFitoSanitariaModel.Denuncia" Role="Denuncia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategoria">
+              <PropertyRef Name="IdSubCategoria" />
+            </Principal>
+            <Dependent Role="Denuncia">
+              <PropertyRef Name="idSubCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolesAccesosWebSiteMap_WebSiteMap">
+          <End Type="dbDenunciaFitoSanitariaModel.WebSiteMap" Role="WebSiteMap" Multiplicity="1" />
+          <End Type="dbDenunciaFitoSanitariaModel.RolesAccesosWebSiteMap" Role="RolesAccesosWebSiteMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WebSiteMap">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RolesAccesosWebSiteMap">
+              <PropertyRef Name="WebSiteMapId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SubCategoria_Imagenes_SubCategoria">
+          <End Type="dbDenunciaFitoSanitariaModel.SubCategoria" Role="SubCategoria" Multiplicity="1" />
+          <End Type="dbDenunciaFitoSanitariaModel.SubCategoria_Imagenes" Role="SubCategoria_Imagenes" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategoria">
+              <PropertyRef Name="IdSubCategoria" />
+            </Principal>
+            <Dependent Role="SubCategoria_Imagenes">
+              <PropertyRef Name="IdSubCategoria" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Role_SubCategoria">
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_Roles" Role="aspnet_Roles" Multiplicity="*" />
+          <End Type="dbDenunciaFitoSanitariaModel.SubCategoria" Role="SubCategoria" Multiplicity="*" />
+        </Association>
+        <Association Name="aspnet_UsersInRoles">
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_Roles" Role="aspnet_Roles" Multiplicity="*" />
+          <End Type="dbDenunciaFitoSanitariaModel.aspnet_Users" Role="aspnet_Users" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbDenunciaFitoSanitariaModelStoreContainer" CdmEntityContainer="dbDenunciaFitoSanitariaEntities">
+          <FunctionImportMapping FunctionImportName="sp_ListadoDenuncias" FunctionName="dbDenunciaFitoSanitariaModel.Store.sp_ListadoDenuncias">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dbDenunciaFitoSanitariaModel.sp_ListadoDenuncias_Result">
+                <ScalarProperty Name="IdDenuncia" ColumnName="IdDenuncia" />
+                <ScalarProperty Name="estadoDenuncia" ColumnName="estadoDenuncia" />
+                <ScalarProperty Name="tipoDenuncia" ColumnName="tipoDenuncia" />
+                <ScalarProperty Name="Categoria" ColumnName="Categoria" />
+                <ScalarProperty Name="SubCategoria" ColumnName="SubCategoria" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Comuna" ColumnName="Comuna" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdEstadoDenuncia" ColumnName="IdEstadoDenuncia" />
+                <ScalarProperty Name="latitud" ColumnName="latitud" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="DenunciaRapida" ColumnName="DenunciaRapida" />
+                <ScalarProperty Name="MensajeVoz" ColumnName="MensajeVoz" />
+                <ScalarProperty Name="ImagenUrl" ColumnName="ImagenUrl" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="ApiToken">
+            <EntityTypeMapping TypeName="dbDenunciaFitoSanitariaModel.ApiToken">
+              <MappingFragment StoreEntitySet="ApiToken">
+                <ScalarProperty Name="ApiEstado" ColumnName="ApiEstado" />
+                <ScalarProperty Name="ApiName" ColumnName="ApiName" />
+                <ScalarProperty Name="ApiTokenPass" ColumnName="ApiTokenPass" />
+                <ScalarProperty Name="ApiTokenName" ColumnName="ApiTokenName" />
+                <ScalarProperty Name="ApiTokenID" ColumnName="ApiTokenID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Applications">
+            <EntityTypeMapping TypeName="dbDenunciaFitoSanitariaModel.aspnet_Applications">
+              <MappingFragment StoreEntitySet="aspnet_Applications">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="LoweredApplicationName" ColumnName="LoweredApplicationName" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Membership">
+            <EntityTypeMapping TypeName="dbDenunciaFitoSanitariaModel.aspnet_Membership">
+              <MappingFragment StoreEntitySet="aspnet_Membership">
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="FailedPasswordAnswerAttemptWindowStart" ColumnName="FailedPasswordAnswerAttemptWindowStart" />
+                <ScalarProperty Name="FailedPasswordAnswerAttemptCount" ColumnName="FailedPasswordAnswerAttemptCount" />
+                <ScalarProperty Name="FailedPasswordAttemptWindowStart" ColumnName="FailedPasswordAttemptWindowStart" />
+                <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
+                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="PasswordAnswer" ColumnName="PasswordAnswer" />
+                <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+                <ScalarProperty Name="LoweredEmail" ColumnName="LoweredEmail" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MobilePIN" ColumnName="MobilePIN" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordFormat" ColumnName="PasswordFormat" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Paths">
+            <EntityTypeMapping TypeName="dbDenunciaFitoSanitariaModel.aspnet_Paths">
+              <MappingFragment StoreEntitySet="aspnet_Paths">
+                <ScalarProperty Name="LoweredPath" ColumnName="LoweredPath" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="PathId" ColumnName="PathId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_PersonalizationAllUsers">
+            <EntityTypeMapping TypeName="dbDenunciaFitoSanitariaModel.aspnet_PersonalizationAllUsers">
+              <MappingFragment StoreEntitySet="aspnet_PersonalizationAllUsers">
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="PageSettings" ColumnName="PageSettings" />
+                <ScalarProperty Name="PathId" ColumnName="PathId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_PersonalizationPerUser">
+            <EntityTypeMapping TypeName="dbDenunciaFitoSanitariaModel.aspnet_PersonalizationPerUser">
+              <MappingFragment StoreEntitySet="aspnet_PersonalizationPerUser">
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="PageSettings" ColumnName="PageSettings" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PathId" ColumnName="PathId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Profile">
+            <EntityTypeMapping TypeName="dbDenunciaFitoSanitariaModel.aspnet_Profile">
+              <MappingFragment StoreEntitySet="aspnet_Profile">
+                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
+                <ScalarProperty Name="PropertyValuesBinary" ColumnName="PropertyValuesBinary" />
+                <ScalarProperty Name="PropertyValuesString" ColumnName="PropertyValuesString" />
+                <ScalarProperty Name="PropertyNames" ColumnName="PropertyNames" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Roles">
+            <EntityTypeMapping TypeName="dbDenunciaFitoSanitariaModel.aspnet_Roles">
+              <MappingFragment StoreEntitySet="aspnet_Roles">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LoweredRoleName" ColumnName="LoweredRoleName" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_SchemaVersions">
+            <EntityTypeMapping TypeName="dbDenunciaFitoSanitariaModel.aspnet_SchemaVersions">
+              <MappingFragment StoreEntitySet="aspnet_SchemaVersions">
+                <ScalarProperty Name="IsCurrentVersion" ColumnName="IsCurrentVersion" />
+                <ScalarProperty Name="CompatibleSchemaVersion" ColumnName="CompatibleSchemaVersion" />
+                <ScalarProperty Name="Feature" ColumnName="Feature" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_Users">
+            <EntityTypeMapping TypeName="dbDenunciaFitoSanitariaModel.aspnet_Users">
+              <MappingFragment StoreEntitySet="aspnet_Users">
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
+                <ScalarProperty Name="MobileAlias" ColumnName="MobileAlias" />
+                <ScalarProperty Name="LoweredUserName" ColumnName="LoweredUserName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_WebEvent_Events">
+            <EntityTypeMapping TypeName="dbDenunciaFitoSanitariaModel.aspnet_WebEvent_Events">
+              <MappingFragment StoreEntitySet="aspnet_WebEvent_Events">
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="ExceptionType" ColumnName="ExceptionType" />
+                <ScalarProperty Name="RequestUrl" ColumnName="RequestUrl" />
+                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+                <ScalarProperty Name="ApplicationVirtualPath" ColumnName="ApplicationVirtualPath" />
+                <ScalarProperty Name="ApplicationPath" ColumnName="ApplicationPath" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="EventDetailCode" ColumnName="EventDetailCode" />
+                <ScalarProperty Name="EventCode" ColumnName="EventCode" />
+                <ScalarProperty Name="EventOccurrence" ColumnName="EventOccurrence" />
+                <ScalarProperty Name="EventSequence" ColumnName="EventSequence" />
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
+                <ScalarProperty Name="EventTime" ColumnName="EventTime" />
+                <ScalarProperty Name="EventTimeUtc" ColumnName="EventTimeUtc" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="dbDenunciaFitoSanitariaModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="ImagenUrl" ColumnName="ImagenUrl" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdTipoDenuncia" ColumnName="IdTipoDenuncia" />
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Denuncia">
+            <EntityTypeMapping TypeName="dbDenunciaFitoSanitariaModel.Denuncia">
+              <MappingFragment StoreEntitySet="Denuncia">
+                <ScalarProperty Name="DenunciaRapida" ColumnName="DenunciaRapida" />
+                <ScalarProperty Name="FechaAprobacion" ColumnName="FechaAprobacion" />
+                <ScalarProperty Name="UserAprobacion" ColumnName="UserAprobacion" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="Georeferencia" ColumnName="Georeferencia" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="Comuna" ColumnName="Comuna" />
+                <ScalarProperty Name="idSubCategoria" ColumnName="idSubCategoria" />
+                <ScalarProperty Name="longitud" ColumnName="longitud" />
+                <ScalarProperty Name="latitud" ColumnName="latitud" />
+                <ScalarProperty Name="ImagenUrl" ColumnName="ImagenUrl" />
+                <ScalarProperty Name="MensajeVoz" ColumnName="MensajeVoz" />
+                <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
+                <ScalarProperty Name="TelefonoContacto" ColumnName="TelefonoContacto" />
+                <ScalarProperty Name="CorreoContacto" ColumnName="CorreoContacto" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdEstadoDenuncia" ColumnName="IdEstadoDenuncia" />
+                <ScalarProperty Name="IdDenuncia" ColumnName="IdDenuncia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoDenuncia">
+            <EntityTypeMapping TypeName="dbDenunciaFitoSanitariaModel.EstadoDenuncia">
+              <MappingFragment StoreEntitySet="EstadoDenuncia">
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdEstadoDenuncia" ColumnName="IdEstadoDenuncia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RolesAccesosWebSiteMap">
+            <EntityTypeMapping TypeName="dbDenunciaFitoSanitariaModel.RolesAccesosWebSiteMap">
+              <MappingFragment StoreEntitySet="RolesAccesosWebSiteMap">
+                <ScalarProperty Name="WebSiteMapId" ColumnName="WebSiteMapId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategoria">
+            <EntityTypeMapping TypeName="dbDenunciaFitoSanitariaModel.SubCategoria">
+              <MappingFragment StoreEntitySet="SubCategoria">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Anonimo" ColumnName="Anonimo" />
+                <ScalarProperty Name="ImagenUrl" ColumnName="ImagenUrl" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="IdSubCategoria" ColumnName="IdSubCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategoria_Imagenes">
+            <EntityTypeMapping TypeName="dbDenunciaFitoSanitariaModel.SubCategoria_Imagenes">
+              <MappingFragment StoreEntitySet="SubCategoria_Imagenes">
+                <ScalarProperty Name="Descripcion4" ColumnName="Descripcion4" />
+                <ScalarProperty Name="Imagen4" ColumnName="Imagen4" />
+                <ScalarProperty Name="Descripcion3" ColumnName="Descripcion3" />
+                <ScalarProperty Name="Imagen3" ColumnName="Imagen3" />
+                <ScalarProperty Name="Descripcion2" ColumnName="Descripcion2" />
+                <ScalarProperty Name="Imagen2" ColumnName="Imagen2" />
+                <ScalarProperty Name="Descripcion1" ColumnName="Descripcion1" />
+                <ScalarProperty Name="Imagen1" ColumnName="Imagen1" />
+                <ScalarProperty Name="IdSubCategoria" ColumnName="IdSubCategoria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoDenuncia">
+            <EntityTypeMapping TypeName="dbDenunciaFitoSanitariaModel.TipoDenuncia">
+              <MappingFragment StoreEntitySet="TipoDenuncia">
+                <ScalarProperty Name="Incognito" ColumnName="Incognito" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="ImagenUrl" ColumnName="ImagenUrl" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdTipoDenuncia" ColumnName="IdTipoDenuncia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebSiteMap">
+            <EntityTypeMapping TypeName="dbDenunciaFitoSanitariaModel.WebSiteMap">
+              <MappingFragment StoreEntitySet="WebSiteMap">
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="url" ColumnName="url" />
+                <ScalarProperty Name="IsClickable" ColumnName="IsClickable" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Role_SubCategoria" TypeName="dbDenunciaFitoSanitariaModel.Role_SubCategoria" StoreEntitySet="Role_SubCategoria">
+            <EndProperty Name="SubCategoria">
+              <ScalarProperty Name="IdSubCategoria" ColumnName="IdSubCategoria" />
+            </EndProperty>
+            <EndProperty Name="aspnet_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="aspnet_UsersInRoles" TypeName="dbDenunciaFitoSanitariaModel.aspnet_UsersInRoles" StoreEntitySet="aspnet_UsersInRoles">
+            <EndProperty Name="aspnet_Users">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="aspnet_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

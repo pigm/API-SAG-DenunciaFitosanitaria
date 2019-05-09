@@ -1,0 +1,497 @@
+/*** Barra Navegación ***/
+
+.navbar {
+  background: #06755f;
+  color: #fff !important;
+  margin-bottom: 0px;
+}
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.navbar {
+  color: #fff;
+}
+
+.navbar a:hover {
+  background: #fff;
+}
+
+.dropdown-menu {
+  background: #eeeeee;
+
+/*** HEADER ***/  
+}
+header {
+  background: #eeeded;
+  height: 115px;
+}
+
+
+
+.sag {
+  margin-top: 60px;
+}
+
+/***
+User Profile Sidebar by @keenthemes
+A component of Metronic Theme - #1 Selling Bootstrap 3 Admin Theme in Themeforest: http://j.mp/metronictheme
+Licensed under MIT
+***/
+
+body {
+  background: #e7e7e7;
+}
+
+/* Profile container */
+.profile {
+  margin: 20px 0;
+}
+
+
+
+/***FOOTER***/
+
+.footer-distributed2{
+  background-color: #063d32;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  padding: 55px 50px;
+  margin-top: 1px;
+}
+
+.footer-distributed2 .footer-left,
+.footer-distributed2 .footer-center,
+.footer-distributed2 .footer-right{
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed2 .footer-left{
+  width: 40%;
+}
+
+/* The company logo */
+
+.footer-distributed2 h3{
+  color:  #ffffff;
+  margin: 0;
+}
+
+.footer-distributed2 h3 span{
+  color:  #5383d3;
+}
+
+
+
+
+
+/* Footer links */
+
+.footer-distributed2 .footer-links{
+  color:  #ffffff;
+  margin: 20px 0 12px;
+  padding: 0;
+}
+
+.footer-distributed2 .footer-links a{
+  display:inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color:  inherit;
+}
+
+.footer-distributed2 .footer-company-name{
+  color:  #8f9296;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed2 .footer-center{
+  width: 35%;
+}
+
+.footer-distributed2 .footer-center i{
+  background-color:  #33383b;
+  color: #ffffff;
+  font-size: 25px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px;
+  margin: 10px 15px;
+  vertical-align: middle;
+}
+
+.footer-distributed2 .footer-center i.fa-envelope{
+  font-size: 17px;
+  line-height: 38px;
+}
+
+.footer-distributed2 .footer-center p{
+  display: inline-block;
+  color: #ffffff;
+  vertical-align: middle;
+  margin:0;
+}
+
+.footer-distributed2 .footer-center p span{
+  display:block;
+  font-weight: normal;
+  font-size:14px;
+  line-height:2;
+}
+
+.footer-distributed2 .footer-center p a{
+  color:  #5383d3;
+  text-decoration: none;;
+}
+
+
+/* Footer Right */
+
+.footer-distributed2 .footer-right{
+  width: 20%;
+}
+
+.footer-distributed2 .footer-company-about{
+  line-height: 20px;
+  color:  #92999f;
+  font-size: 13px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer-distributed2 .footer-company-about span{
+  display: block;
+  color:  #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer-distributed2 .footer-icons{
+  margin-top: 25px;
+}
+
+.footer-distributed2 .footer-icons a{
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color:  #33383b;
+  border-radius: 2px;
+
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 880px) {
+
+  .footer-distributed2{
+    font: bold 14px sans-serif;
+  }
+
+  .footer-distributed2 .footer-left,
+  .footer-distributed2 .footer-center,
+  .footer-distributed2 .footer-right{
+    display: block;
+    width: 100%;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .footer-distributed2 .footer-center i{
+    margin-left: 0;
+  }
+
+}
+
+ body {
+    overflow-x: hidden;
+ }
+
+/* Toggle Styles */
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.6s ease;
+    -moz-transition: all 0.6s ease;
+    -o-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+    
+}
+
+#wrapper.toggled {
+    padding-left: 200px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+    position: fixed;
+    left: 250px;
+    
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    background-color:#0b483c !Important;
+   
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 0;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    position: absolute;
+    padding: 10px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-left:-0px;
+}
+
+/* Sidebar Styles */
+#menu2 {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    background-color: #07241f;
+    box-shadow: none;
+}
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    right:15px;
+    width: 200px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: #0a342c;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media(min-width:768px) {
+
+  
+
+    #wrapper {
+        padding-left: 220px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 200px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 40px;
+        
+        
+    }
+
+#wrapper.toggled span {
+        visibility:hidden;
+        
+    }
+  #wrapper.toggled   i {
+ float:right;
+ } 
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+}
+
+
+@media(max-width:414px) {
+
+  #logo-xs{
+    float: left;
+    position: absolute;
+    margin-left: 10px;
+   }
+
+   #titulo-superior{
+     float: right !important;
+     color: #fff;
+   }
+   #contenedor-principal{
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-top: 20px;
+  }
+
+  #contenedor-principal .panel{
+      padding: 0 20px;
+  }
+
+  #registroExterno{
+    width: 100%;
+  }
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right:60px;
+}
+
+#wrapper.toggled {
+    padding-right: 60px;
+}
+
+ #wrapper {
+        padding-left: 20px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 50px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 140px;
+        
+        
+    }
+    
+    #wrapper.toggled span {
+        visibility:visible;
+        position:relative;
+        left:70px;
+        bottom:13px;
+        
+    }
+
+#wrapper span {
+        visibility:hidden;
+        
+    }
+  #wrapper.toggled   i {
+ float:right;
+ } 
+ 
+  #wrapper   i {
+ float:right;
+ } 
+
+    #page-content-wrapper {
+        padding: 5px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+
+}
+
+.central {
+  margin-left: -14px;
+  margin-bottom: 0px;
+}
+
+#saludo h1{
+  margin-top: -330px;
+  text-align: center;
+  color: #fff;
+}
+#saludo h3{
+  margin-top: 0px;
+  text-align: center;
+  color: #fff;
+}
+
+.caja {
+  margin-top: 5px;
+  background-color: #fff;
+  border-radius: 10px 10px 10px 10px;
+-moz-border-radius: 10px 10px 10px 10px;
+-webkit-border-radius: 10px 10px 10px 10px;
+border: 0px solid #000000;
+padding-left: 20px;
+padding-right: 20px;
+padding-top: 20px;
+padding-bottom: 20px;
+-webkit-box-shadow: 0px 0px 5px -1px rgba(74,74,74,1);
+-moz-box-shadow: 0px 0px 5px -1px rgba(74,74,74,1);
+box-shadow: 0px 0px 5px -1px rgba(74,74,74,1);
+}
+
+
+/*  ESTILOS PARTICULARES */
